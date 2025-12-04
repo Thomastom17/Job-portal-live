@@ -20,10 +20,10 @@ export const Header = () => {
     </nav>
 
     <div className="auth-links">
-      <Link to="/Job-portal/jobseeker/login" className="login-btn">Login</Link>
-      <Link to="/Job-portal/jobseeker/signup" className="signup-btn">Sign up</Link>
+      <Link to="/Job-portal-Live/jobseeker/login" className="login-btn">Login</Link>
+      <Link to="/Job-portal-Live/jobseeker/signup" className="signup-btn">Sign up</Link>
       <div className="separator"></div>
-      <Link to="/Job-portal/employer/login" className="emp-log-link">For Employers</Link>
+      <Link to="/Job-portal-Live/employer/login" className="emp-log-link">For Employers</Link>
     </div>
     </header>
     </>

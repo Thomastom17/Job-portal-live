@@ -30,12 +30,12 @@ const companiesList = CompaniesList.slice(0,8)
 
 export const CompaniesTab = () => {
   const navigate = useNavigate();
-  const [showNotification, setShowNotification] = useState(false);
-  const newNotificationsCount = notificationsData.filter(n => n.isNew).length;
+  // const [showNotification, setShowNotification] = useState(false);
+  // const newNotificationsCount = notificationsData.filter(n => n.isNew).length;
 
   return (
     <>
-      <header className="header">
+      {/* <header className="header">
         <div className="logo">job portal</div>
         <nav className="nav-links">
           <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
@@ -50,7 +50,7 @@ export const CompaniesTab = () => {
           <AvatarMenu />
         </div>
         <JNotification notificationsData={notificationsData} showNotification={showNotification} setShowNotification={setShowNotification} />
-      </header>
+      </header> */}
 
       <div className='jobs-tab-search-bar'>
         <div className="search-bar">
@@ -97,7 +97,7 @@ export const CompaniesTab = () => {
                 <span className="companies-tab-reviews">{company.reviewNo} reviews</span>
               </div>
               <p className="companies-tab-desc">{company.slogan}</p>
-              <button className="companies-tab-view-jobs-btn" onClick={()=>navigate(`/Job-portal/jobseeker/companies/${company.companyId}`)}>View Jobs</button>
+              <button className="companies-tab-view-jobs-btn" onClick={()=>navigate(`/Job-portal-Live/jobseeker/companies/${company.companyId}`)}>View Jobs</button>
             </div>
           ))}
         </div>

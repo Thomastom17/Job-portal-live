@@ -39,9 +39,9 @@ export const OpportunityOverview = () => {
       <header className="header">
         <div className="logo">job portal</div>
         <nav className="nav-links">
-          <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
-          <Link to="/Job-portal/jobseeker/jobs" className="nav-item" >Jobs</Link>
-          <Link to="/Job-portal/jobseeker/companies" className="nav-item" >Companies</Link>
+          <Link to="/Job-portal-Live/jobseeker/" className="nav-item" >Home</Link>
+          <Link to="/Job-portal-Live/jobseeker/jobs" className="nav-item" >Jobs</Link>
+          <Link to="/Job-portal-Live/jobseeker/companies" className="nav-item" >Companies</Link>
         </nav>
 
         <div className="auth-links">

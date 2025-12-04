@@ -17,7 +17,7 @@ import Infy from '../assets/INFY_BIG.png'
 import META from '../assets/META_BIG.png'
 import Google from '../assets/GOOG.png'
 import { CompaniesList } from "../CompaniesList";
-import { Joblist } from "../Joblist";
+import { Joblist } from '../JobList';
 import { AvatarMenu } from './AvatarMenu';
 
 export const JobsThroughCompany = () => {
@@ -106,9 +106,9 @@ export const JobsThroughCompany = () => {
             <header className="header">
                 <div className="logo">job portal</div>
                 <nav className="nav-links">
-                    <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
-                    <Link to="/Job-portal/jobseeker/jobs" className="nav-item" >Jobs</Link>
-                    <Link to="/Job-portal/jobseeker/companies" className="nav-item" >Companies</Link>
+                    <Link to="/Job-portal-Live/jobseeker/" className="nav-item" >Home</Link>
+                    <Link to="/Job-portal-Live/jobseeker/jobs" className="nav-item" >Jobs</Link>
+                    <Link to="/Job-portal-Live/jobseeker/companies" className="nav-item" >Companies</Link>
                 </nav>
 
                 <div className="auth-links">

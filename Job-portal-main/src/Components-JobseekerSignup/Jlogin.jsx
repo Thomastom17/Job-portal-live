@@ -49,7 +49,7 @@ export const Jlogin = () => {
     if (!validateForm()) {
       return false // stops form submit if errors
     }
-    navigate("/Job-portal/jobseeker/") // This Code is removed after backend integration 
+    navigate("/Job-portal-Live/jobseeker/") // This Code is removed after backend integration 
   }
 
   return (
@@ -87,7 +87,7 @@ export const Jlogin = () => {
 
           <div className="form-options">
             <label><input type="checkbox" /> Remember me</label>
-            <Link to="/Job-portal/jobseeker/login/forgotpassword" className='forgot-password'>Forgot Password?</Link>
+            <Link to="/Job-portal-Live/jobseeker/login/forgotpassword" className='forgot-password'>Forgot Password?</Link>
           </div>
 
           <button className="j-login-btn">Login</button>

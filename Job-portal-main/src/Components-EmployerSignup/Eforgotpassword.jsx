@@ -42,13 +42,13 @@ export const Eforgotpassword = () => {
   return (
     <div className="j-forgot-password-page">
       <header className="j-forgot-password-header">
-        <Link to="/Job-portal" className="logo">
+        <Link to="/Job-portal-Live" className="logo">
           <span className="logo-text">job portal</span>
           <span className='subtext'>for Employers</span>
         </Link>
         <div className="j-forgot-password-header-links">
           <span className='no-account'>Don't have an account?</span>
-          <Link to="/Job-portal/employer/signup" className="signup-btn">Sign up</Link>
+          <Link to="/Job-portal-Live/employer/signup" className="signup-btn">Sign up</Link>
         </div>
       </header>
       <div className='j-forgot-password-login-body'>

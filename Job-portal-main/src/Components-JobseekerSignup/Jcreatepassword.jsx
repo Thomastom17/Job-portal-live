@@ -54,12 +54,12 @@ export const Jcreatepassword = () => {
   return (
     <div className="j-create-password-page">
       <header className="j-create-password-header">
-        <Link to="/Job-portal" className="logo">
+        <Link to="/Job-portal-Live" className="logo">
           <span className="logo-text">job portal</span>
         </Link>
         <div className="j-create-password-header-links">
           <span className='no-account'>Create a new account?</span>
-          <Link to="/Job-portal/jobseeker/signup" className="signup-btn">Create</Link>
+          <Link to="/Job-portal-Live/jobseeker/signup" className="signup-btn">Create</Link>
         </div>
       </header>
       <div className='j-create-password-login-body'>

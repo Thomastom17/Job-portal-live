@@ -62,15 +62,15 @@ export const ESignup = () => {
     return (
       <div className="j-sign-up-page">
         <header className="j-sign-up-header">
-          <Link to="/Job-portal" className="logo">
+          <Link to="/Job-portal-Live" className="logo">
             <span className="logo-text">job portal</span>
             <span className='subtext'>for Employers</span>
           </Link>
           <div className="j-sign-up-header-links">
             <span className='no-account'>Already have an account?</span>
-            <Link to="/Job-portal/employer/login" className="signup-btn">Login</Link>
+            <Link to="/Job-portal-Live/employer/login" className="signup-btn">Login</Link>
             <div className="separator"></div>
-            <Link to='/Job-portal/jobseeker/login' className="employer-redirect-link">Job seekers Login</Link> 
+            <Link to='/Job-portal-Live/jobseeker/login' className="employer-redirect-link">Job seekers Login</Link> 
           </div>
         </header>
   

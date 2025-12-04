@@ -57,9 +57,9 @@ export const Elogin = () => {
         </Link>
         <div className="header-links">
           <span className='no-account'>Don’t have an account?</span>
-          <Link to="/Job-portal/employer/signup" className="signup-btn">Create</Link>
+          <Link to="/Job-portal-Live/employer/signup" className="signup-btn">Create</Link>
           <div className="separator"></div>
-          <Link to="/Job-portal/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
+          <Link to="/Job-portal-Live/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
         </div>
       </header>
 

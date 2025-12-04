@@ -36,7 +36,7 @@ export const Jforgotpassword = () => {
     if (!validateForm()) {
       return false // stops form submit if errors
     }
-    navigate("/Job-portal/jobseeker/login/forgotpassword/createpassword") // This Code is removed after backend integration
+    navigate("/Job-portal-Live/jobseeker/login/forgotpassword/createpassword") // This Code is removed after backend integration
   }
 
   return (
@@ -47,7 +47,7 @@ export const Jforgotpassword = () => {
         </Link>
         <div className="j-forgot-password-header-links">
           <span className='no-account'>Don't have an account?</span>
-          <Link to="/Job-portal/jobseeker/signup" className="signup-btn">Sign up</Link>
+          <Link to="/Job-portal-Live/jobseeker/signup" className="signup-btn">Sign up</Link>
         </div>
       </header>
       <div className='j-forgot-password-login-body'>
