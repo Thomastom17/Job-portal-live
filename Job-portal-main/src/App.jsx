@@ -19,7 +19,7 @@ import { MyProfile } from './Components-Jobseeker/MyProfile'
 import { JobsThroughCompany } from './Components-Jobseeker/JobsThroughCompany'
 
 const router = createBrowserRouter([{
-  path: '/Job-portal-Live',
+  path: '/Job-portal',
   element: <Landingpage />,
 },
 {
