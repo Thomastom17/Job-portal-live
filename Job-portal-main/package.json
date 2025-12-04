@@ -1,7 +1,7 @@
 {
   "name": "job-portal-project",
-  "homepage": "https://Ajeeth5122.github.io/Job-portal-Live",
-  "private": true,
+  "homepage": "https://Ajeeth5122.github.io/Job-portal",
+  "private": "false",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
