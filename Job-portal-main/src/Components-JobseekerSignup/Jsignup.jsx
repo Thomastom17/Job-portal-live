@@ -8,12 +8,16 @@ import './Jsignup.css'
 
 export const Jsignup = () => {
   const [passwordShow, setPasswordShow] = useState(true)
+    
+    const oneUpperCase = /^(?=.*[A-Z]).{8,}$/;
+    const oneNumber = /^(?=.*[0-9]).{8,}$/;
+    const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
 
   const togglePasswordView = () => {
     setPasswordShow((prev) => !prev)
   }
 
-  const initialValues = { username: "", email: "", password: "", phone: "" }
+  const initialValues = { username: "", email: "", password: "",confirmPassword:"", phone: "" }
   const [formValues, setFormValues] = useState(initialValues)
 
   const [errors, setErrors] = useState({})
@@ -40,10 +44,27 @@ export const Jsignup = () => {
     }
 
     if (!formValues.password.trim()) {
-      newErrors.password = "Password is required"
-    } else if (formValues.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters"
+      newErrors.password = "Password is required"} 
+    else if (formValues.password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters"}
+    else if (!formValues.password.trim()) {
+      newErrors.password = "Password is required"}
+    else if (!oneUpperCase.test(formValues.password)) {
+      newErrors.password = "Password must include at least one uppercase letter"} 
+    else if (!oneNumber.test(formValues.password)) {
+      newErrors.password = "Password must include at least one number"}
+    else if (!oneSpecChar.test(formValues.password)) {
+      newErrors.password = "Password must include at least one special Charectors"
     }
+
+    if (!formValues.confirmPassword.trim()) {
+      newErrors.confirmPassword = "Confirm Password is required"
+    } else if (formValues.confirmPassword.length < 8) {
+      newErrors.confirmPassword = "Password must be at least 8 characters"
+    } else if (formValues.confirmPassword !== formValues.password) {
+      newErrors.confirmPassword = "Passwords do not match"
+    }
+    
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -92,6 +113,13 @@ export const Jsignup = () => {
             <span className="eye-icon" onClick={togglePasswordView}><img src={passwordShow ? eye : eyeHide} className='show-icon' alt='show' /></span>
           </div>
           {errors.password && <span className="error-msg">{errors.password}</span>}
+
+           <label>Confirm Password</label>
+          <div className="password-wrapper">
+            <input type={passwordShow ? "password" : "text"} name="confirmPassword" value={formValues.confirmPassword} onChange={handleForm} placeholder="Create a new password" className={errors.password ? "input-error" : ""} />
+            <span className="eye-icon" onClick={togglePasswordView}><img src={passwordShow ? eye : eyeHide} className='show-icon' alt='show' /></span>
+          </div>
+          {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword}</span>}
 
           <label>Mobile number (optional)</label>
           <input type="tel" name="phone" value={formValues.phone} onChange={handleForm} placeholder="Enter your mobile number" />

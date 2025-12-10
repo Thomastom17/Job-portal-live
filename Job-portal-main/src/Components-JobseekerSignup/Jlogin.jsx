@@ -11,14 +11,21 @@ export const Jlogin = () => {
 
   const navigate = useNavigate();
 
+    // const oneUpperCase = /^(?=.*[A-Z]).{8,}$/;
+    // const oneNumber = /^(?=.*[0-9]).{8,}$/;
+    // const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
+
+    const userName= "Jobportal";
+    const pwd = "Jobs@123"
+
   const [passwordShow, setPasswordShow] = useState(true)
 
   const togglePasswordView = () => {
     setPasswordShow((prev) => !prev)
   }
 
-  const initialValues = { username: "", password: "" }
-  const [formValues, setFormValues] = useState(initialValues)
+  const initialValues = { username: "", password: "" };
+  const [formValues, setFormValues] = useState(initialValues);
 
   const [errors, setErrors] = useState({})
 
@@ -27,30 +34,27 @@ export const Jlogin = () => {
     setFormValues({ ...formValues, [name]: value })
     setErrors({ ...errors, [name]: "" })
   }
-
-  const validateForm = () => {
-    const newErrors = {}
+  function handleSubmit(formData) {
+  const newErrors = {}
 
     if (!formValues.username.trim()) {
       newErrors.username = "Username or Email is required"
+    }else if (formValues.username !== userName){
+      newErrors.username = "Incorrect Username"
     }
 
-    if (!formValues.password.trim()) {
+     if (!formValues.password.trim()) {
       newErrors.password = "Password is required"
-    } else if (formValues.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters"
+    }else if (formValues.password !== pwd){
+      newErrors.password = "Incorrect Password"
     }
 
-    setErrors(newErrors)
+  else {
+    navigate("/Job-portal-Live/jobseeker/")
+  }
+ setErrors(newErrors)
     return Object.keys(newErrors).length === 0
-  }
-
-  function handleSubmit(formData) {
-    if (!validateForm()) {
-      return false // stops form submit if errors
-    }
-    navigate("/Job-portal-Live/jobseeker/") // This Code is removed after backend integration 
-  }
+}
 
   return (
     <div className="login-page">

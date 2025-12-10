@@ -17,6 +17,9 @@ export const Elogin = () => {
   const [formValues, setFormValues] = useState(initialValues)
 
   const [errors, setErrors] = useState({})
+  //  const oneUpperCase = /^(?=.*[A-Z]).{8,}$/;
+  //   const oneNumber = /^(?=.*[0-9]).{8,}$/;
+  //   const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
 
   const handleForm = (e) => {
     const { name, value } = e.target
@@ -32,10 +35,18 @@ export const Elogin = () => {
     }
 
     if (!formValues.password.trim()) {
-      newErrors.password = "Password is required"
-    } else if (formValues.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters"
-    }
+      newErrors.password = "Password is required"} 
+    // else if (formValues.password.length < 8) {
+    //   newErrors.password = "Password must be at least 8 characters"}
+    // else if (!formValues.password.trim()) {
+    //   newErrors.password = "Password is required"}
+    // else if (!oneUpperCase.test(formValues.password)) {
+    //   newErrors.password = "Password must include at least one uppercase letter"} 
+    // else if (!oneNumber.test(formValues.password)) {
+    //   newErrors.password = "Password must include at least one number"}
+    // else if (!oneSpecChar.test(formValues.password)) {
+    //   newErrors.password = "Password must include at least one special Charectors"
+    // }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0

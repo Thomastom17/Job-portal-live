@@ -172,3 +172,6 @@ body {
   width: 18px;
   height: 18px;
 }
+.error-msg-Hidden{
+  display: none;
+}
