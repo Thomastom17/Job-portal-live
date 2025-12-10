@@ -5,8 +5,10 @@ import manSitting from '../assets/Illustration_1.png'
 import eye from '../assets/show_password.png'
 import eyeHide from '../assets/eye-hide.png'
 import './Elogin.css'
+// import {useHistoty} from 'react-router-dom';
 
 export const Elogin = () => {
+  // const history = useHistoty();
   const [passwordShow, setPasswordShow] = useState(true)
 
   const togglePasswordView = () => {
@@ -46,6 +48,8 @@ export const Elogin = () => {
       return false // stops form submit if errors
     }
     console.log("Logged in successfully") // This Code is removed after backend integration 
+    // if (input.email !== 'admin@a.com' || input.password !== 'admin@1234') return seterrormsg('Invalid email or password');
+    // history.push('/');
   }
 
   return (

@@ -13,7 +13,7 @@ export const Jsignup = () => {
     setPasswordShow((prev) => !prev)
   }
 
-  const initialValues = { username: "", email: "", password: "", phone: "" }
+  const initialValues = { username: "", email: "", password: "", confirmpassword:"",  phone: "" }
   const [formValues, setFormValues] = useState(initialValues)
 
   const [errors, setErrors] = useState({})
@@ -28,6 +28,10 @@ export const Jsignup = () => {
     const newErrors = {}
 
     const regexOfMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    const regexofUppercase = /^(?=.*[A-Z]).+$/
+    const regexofNumber = /^(?=.*\d).+$/
+    const regexofSpecialChar = /^(?=.*[!@#$%^&*]).+$/
+
 
     if (!formValues.username.trim()) {
       newErrors.username = "Username is required"
@@ -44,6 +48,20 @@ export const Jsignup = () => {
     } else if (formValues.password.length < 8) {
       newErrors.password = "Password must be at least 8 characters"
     }
+      else if (!regexofUppercase.test(formValues.password)) {
+          newErrors.password = "Password must contain at least one uppercase letter"
+        }
+      else if (!regexofNumber.test(formValues.password)) {
+          newErrors.password = "Password must contain at least one number"
+        }
+      else if (!regexofSpecialChar.test(formValues.password)) {
+          newErrors.password = "Password must contain at least one special character"
+        }
+    if (!formValues.confirmpassword.trim()) {
+          newErrors.confirmpassword = "Confirm Password is required"
+    } else if (formValues.password !== formValues.confirmpassword) {
+          newErrors.confirmpassword = "Passwords do not match"
+        }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -92,6 +110,13 @@ export const Jsignup = () => {
             <span className="eye-icon" onClick={togglePasswordView}><img src={passwordShow ? eye : eyeHide} className='show-icon' alt='show' /></span>
           </div>
           {errors.password && <span className="error-msg">{errors.password}</span>}
+          
+          <label>confirm Password</label>
+          <div className="password-wrapper">
+            <input type={passwordShow ? "password" : "text"} name="confirmpassword" value={formValues.confirmpassword} onChange={handleForm} placeholder="Confirmpassword" className={errors.confirmpassword ? "input-error" : ""} />
+            <span className="eye-icon" onClick={togglePasswordView}><img src={passwordShow ? eye : eyeHide} className='show-icon' alt='show' /></span>
+          </div>
+          {errors.confirmpassword && <span className="error-msg">{errors.confirmpassword}</span>}
 
           <label>Mobile number (optional)</label>
           <input type="tel" name="phone" value={formValues.phone} onChange={handleForm} placeholder="Enter your mobile number" />

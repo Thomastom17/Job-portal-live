@@ -6,8 +6,10 @@ import eye from '../assets/show_password.png'
 import eyeHide from '../assets/eye-hide.png'
 import Google from '../assets/GOOG.png'
 import './Jlogin.css'
+// import {useHistoty} from 'react-router-dom';
 
 export const Jlogin = () => {
+  // const history = useHistoty();
 
   const navigate = useNavigate();
 
@@ -36,10 +38,10 @@ export const Jlogin = () => {
     }
 
     if (!formValues.password.trim()) {
-      newErrors.password = "Password is required"
-    } else if (formValues.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters"
-    }
+      newErrors.password = "Password is required"}
+    //  else if (formValues.password.length < 8) {
+    //   newErrors.password = "Password must be at least 8 characters"
+    // }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -50,6 +52,8 @@ export const Jlogin = () => {
       return false // stops form submit if errors
     }
     navigate("/Job-portal/jobseeker/") // This Code is removed after backend integration 
+    // if (input.email !== 'admin@a.com' || input.password !== 'admin@1234') return seterrormsg('Invalid email or password');
+    // history.push('/');
   }
 
   return (
