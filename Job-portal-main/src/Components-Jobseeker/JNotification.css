@@ -121,6 +121,11 @@
     cursor: pointer;
     height: 50px;
     background-color: #f8f3f3;
+
+}
+.notification-old-item:last-child .overflow-menu{
+
+    transform: translate(0, -70px);
 }
 
 .notification-content {
@@ -162,11 +167,12 @@
     padding: 5px; /* Added padding for easier tapping/clicking */
 }
 
+
 /* Styles for the Overflow Menu */
 .overflow-menu {
     position: absolute;
     top: 100%; /* Position below the three-dot button */
-    right: 0;
+    right: 20px;
     /* Adjustments to make it look like the provided image */
     width: 150px; 
     background-color: #ffffff;
