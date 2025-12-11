@@ -26,7 +26,7 @@ const Freshness = () => {
     
 };
 
-const topcompanies = [
+const newcompanies = [
     { index: '1', value: 'Wipro' },
     { index: '2', value: 'Apple' },
     { index: '3', value: 'Amazon' },
