@@ -80,7 +80,7 @@ export default function Tom() {
         <h2>Top Companies</h2>
       
       <div className='company-options'>
-        {topcompanies.map((option) => (
+        {newcompanies.map((option) => (
           <div key={option.index} className='freshness-option'>
             <input 
             type="checkbox" 
