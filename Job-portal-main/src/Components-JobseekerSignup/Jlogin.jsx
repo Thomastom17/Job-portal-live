@@ -49,7 +49,7 @@ export const Jlogin = () => {
       newErrors.password = "Incorrect Password"
     }
 
-  else {
+  if(formValues.username === userName && formValues.password===pwd) {
     navigate("/Job-portal-Live/jobseeker/")
   }
  setErrors(newErrors)

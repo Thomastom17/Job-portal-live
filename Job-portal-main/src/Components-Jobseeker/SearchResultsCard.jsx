@@ -6,20 +6,23 @@ import place from '../assets/opportunity_location.png'
 import formatPostedDate from './OpportunitiesCard';
 import "./SearchResultsCard.css"
 import { Joblist } from '../JobList';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function SearchResultsCard(props) {
     const {job} = props;
-    
+    const navigate=useNavigate();
 
-    const logoContent = job.logo ? (<img src={job.logo} alt={job.company} className="SearchResults-job-card-job-logo" />) : (<div className="SearchResults-job-card-job-logo-placeholder">{job.company.charAt(0).toUpperCase()}</div>)
-   
+    const logoContent = job.logo ? (<img src={job.logo} alt={job.company} className="SearchResults-job-card-job-logo" />) : (<div className="SearchResults-job-card-logo-placeholder">{job.company.charAt(0).toUpperCase()}</div>)
+    const HandleClick = () => {
+        navigate(`/Job-portal-Live/jobseeker/OpportunityOverview/${job.id}`)
+    }
   return (
     
    
     <div className="SearchResults-job-card">
-                <div className="SearchResults-job-card-header">
+                <div onClick={HandleClick} className="SearchResults-job-card-header">
                     <div>
                         <h3 className="SearchResults-job-card-title">{job.title}</h3>
                         <p className="SearchResults-job-card-company">{job.company}</p>
