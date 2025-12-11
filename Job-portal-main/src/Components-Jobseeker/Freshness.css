@@ -47,3 +47,56 @@
 .freshness-option input[type="checkbox"]:checked{
     accent-color: #0073b1;
 }
+
+
+.company-head{
+    width: 250px;
+    height: auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.company-head h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.company-options{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.company-option label{
+    font-size: 16px;
+    cursor: pointer;
+}
+.company-option input[type="checkbox"]{
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.company-option input[type="checkbox"]:checked{
+    accent-color: #0073b1;
+}
+
+.tom-button{
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.tom-button:hover{
+    background-color: #005f8d;
+}
+
+

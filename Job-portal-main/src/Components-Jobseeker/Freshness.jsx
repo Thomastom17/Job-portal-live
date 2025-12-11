@@ -27,10 +27,24 @@ const Freshness = () => {
 };
 
 const topcompanies = [
-    { index: '1', value: 'Amazon' },
-    { index: '2', value: 'Google' },
+    { index: '1', value: 'Wipro' },
+    { index: '2', value: 'Apple' },
+    { index: '3', value: 'Amazon' },
 ];
+const companies = () => {
+  const [checkedlist, setCheckedlist] = React.useState([]);
+};
 
+const handleSelectCompany = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked; 
+
+    if (isChecked) {
+      setCheckedlist([...checkedlist, value]);
+    } else {
+      setCheckedlist(checkedlist.filter((item) => item !== value));
+    }
+  };
 
 export default function Tom() {
   return (
@@ -59,6 +73,31 @@ export default function Tom() {
           </div>
         ))}
       </div>
+      </div>
+
+    <div className='company-head'>
+
+        <h2>Top Companies</h2>
+      
+      <div className='company-options'>
+        {topcompanies.map((option) => (
+          <div key={option.index} className='freshness-option'>
+            <input 
+            type="checkbox" 
+            id={option.index} 
+            name="topcompanies" 
+            value={option.value}
+            onChange={handleSelectCompany} />
+
+            <label for={option.index}>{option.value}</label>
+            
+          </div>
+        ))}
+      </div>
+
+      <button className='tom-button'>Viewmore</button>
+
+    
 
     </div>
     
