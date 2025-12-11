@@ -36,19 +36,19 @@ export const Eforgotpassword = () => {
     if (!validateForm()) {
       return false // stops form submit if errors
     }
-    navigate("/Job-portal/employer/login/forgotpassword/createpassword") // This Code is removed after backend integration
+    navigate("/Job-portal-live/employer/login/forgotpassword/createpassword") // This Code is removed after backend integration
   }
 
   return (
     <div className="j-forgot-password-page">
       <header className="j-forgot-password-header">
-        <Link to="/Job-portal" className="logo">
+        <Link to="/Job-portal-live" className="logo">
           <span className="logo-text">job portal</span>
           <span className='subtext'>for Employers</span>
         </Link>
         <div className="j-forgot-password-header-links">
           <span className='no-account'>Don't have an account?</span>
-          <Link to="/Job-portal/employer/signup" className="signup-btn">Sign up</Link>
+          <Link to="/Job-portal-live/employer/signup" className="signup-btn">Sign up</Link>
         </div>
       </header>
       <div className='j-forgot-password-login-body'>

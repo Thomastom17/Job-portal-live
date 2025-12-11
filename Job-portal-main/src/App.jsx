@@ -17,71 +17,81 @@ import { JobsTab } from './Components-Jobseeker/JobsTab'
 import { CompaniesTab } from './Components-Jobseeker/CompaniesTab'
 import { MyProfile } from './Components-Jobseeker/MyProfile'
 import { JobsThroughCompany } from './Components-Jobseeker/JobsThroughCompany'
+import  Freshness  from './Components-Jobseeker/Freshness'
 
-const router = createBrowserRouter([{
+
+const router = createBrowserRouter([
+  {
   path: '/Job-portal-live',
   element: <Landingpage />,
 },
 {
-  path: '/Job-portal/jobseeker/login',
+  path: '/Job-portal-live/jobseeker/login',
   element: <Jlogin />,
 },
 {
-  path: '/Job-portal/jobseeker/login/forgotpassword',
+  path: '/Job-portal-live/jobseeker/login/forgotpassword',
   element: <Jforgotpassword />,
 },
 {
-  path: '/Job-portal/jobseeker/signup',
+  path: '/Job-portal-live/jobseeker/signup',
   element: <Jsignup />,
 },
 {
-  path: '/Job-portal/jobseeker/login/forgotpassword/createpassword',
+  path: '/Job-portal-live/jobseeker/login/forgotpassword/createpassword',
   element: <Jcreatepassword />,
 },
 {
-  path: '/Job-portal/jobseeker/',
+  path: '/Job-portal-live/jobseeker/',
   element: <Afterloginlanding />,
 },
 {
-  path: '/Job-portal/employer/login',
+  path: '/Job-portal-live/employer/login',
   element: <Elogin />,
 },
 {
-  path: '/Job-portal/employer/signup',
+  path: '/Job-portal-live/employer/signup',
   element: <ESignup />,
 },
 {
-  path: '/Job-portal/employer/login/forgotpassword',
+  path: '/Job-portal-live/employer/login/forgotpassword',
   element: <Eforgotpassword />,
 },
 {
-  path: '/Job-portal/employer/login/forgotpassword/createpassword',
+  path: '/Job-portal-live/employer/login/forgotpassword/createpassword',
   element: <Ecreatepassword />,
 },
 {
-  path: '/Job-portal/jobseeker/OpportunityOverview/:id',
+  path: '/Job-portal-live/jobseeker/OpportunityOverview/:id',
   element: <OpportunityOverview />,
 },
 {
-  path: '/Job-portal/jobseeker/myjobs',
+  path: '/Job-portal-live/jobseeker/myjobs',
   element: <MyJobs />,
 },
 {
-  path: '/Job-portal/jobseeker/jobs',
+  path: '/Job-portal-live/jobseeker/jobs',
   element: <JobsTab />,
 },
 {
-  path: '/Job-portal/jobseeker/companies',
+  path: '/Job-portal-live/jobseeker/companies',
   element: <CompaniesTab />,
 },
 {
-  path: '/Job-portal/jobseeker/myprofile',
+  path: '/Job-portal-live/jobseeker/myprofile',
   element: <MyProfile />,
 },
 {
-  path: '/Job-portal/jobseeker/companies/:companyId',
+  path: '/Job-portal-live/jobseeker/companies/:companyId',
   element: <JobsThroughCompany />,
-}])
+},
+
+{path: '/Job-portal-live/jobseeker/freshness',
+element: <Freshness />
+
+}
+
+])
 
 function App() {
   return (

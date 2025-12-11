@@ -163,13 +163,13 @@ export const MyJobs = () => {
             <header className="header">
                 <div className="logo">job portal</div>
                 <nav className="nav-links">
-                    <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
-                    <Link to="/Job-portal/jobseeker/jobs" className="nav-item" >Jobs</Link>
-                    <Link to="/Job-portal/jobseeker/companies" className="nav-item" >Companies</Link>   
+                    <Link to="/Job-portal-live/jobseeker/" className="nav-item" >Home</Link>
+                    <Link to="/Job-portal-live/jobseeker/jobs" className="nav-item" >Jobs</Link>
+                    <Link to="/Job-portal-live/jobseeker/companies" className="nav-item" >Companies</Link>   
                 </nav>
 
                 <div className="auth-links">
-                    <div to="/Job-portal/jobseeker/myjobs" className="nav-icon-active"><img className='header-icons' src={breifcase} alt='My Jobs' /></div>
+                    <div to="/Job-portal-live/jobseeker/myjobs" className="nav-icon-active"><img className='header-icons' src={breifcase} alt='My Jobs' /></div>
                     <div><img className='header-icons' src={chat} alt='Messages' /></div>
                     <div onClick={() => setShowNotification(!showNotification)}><img className='header-icons' src={newNotificationsCount > 0 ? bell_dot: bell} alt='Notifications' /></div>
                     <AvatarMenu />

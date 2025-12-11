@@ -51,7 +51,7 @@ export const Jlogin = () => {
     if (!validateForm()) {
       return false // stops form submit if errors
     }
-    navigate("/Job-portal/jobseeker/") // This Code is removed after backend integration 
+    navigate("/Job-portal-live/jobseeker/") // This Code is removed after backend integration 
     // if (input.email !== 'admin@a.com' || input.password !== 'admin@1234') return seterrormsg('Invalid email or password');
     // history.push('/');
   }
@@ -59,14 +59,14 @@ export const Jlogin = () => {
   return (
     <div className="login-page">
       <header className="login-header">
-        <Link to="/Job-portal" className="logo">
+        <Link to="/Job-portal-live" className="logo">
           <span className="logo-text">job portal</span>
         </Link>
         <div className="header-links">
           <span className='no-account'>Don’t have an account?</span>
-          <Link to="/Job-portal/jobseeker/signup" className="signup-btn">Sign up</Link>
+          <Link to="/Job-portal-live/jobseeker/signup" className="signup-btn">Sign up</Link>
           <div className="separator"></div>
-          <Link to='/Job-portal/employer/login' className="employer-redirect-link">Employers Login</Link>
+          <Link to='/Job-portal-live/employer/login' className="employer-redirect-link">Employers Login</Link>
         </div>
       </header>
 
@@ -91,7 +91,7 @@ export const Jlogin = () => {
 
           <div className="form-options">
             <label><input type="checkbox" /> Remember me</label>
-            <Link to="/Job-portal/jobseeker/login/forgotpassword" className='forgot-password'>Forgot Password?</Link>
+            <Link to="/Job-portal-live/jobseeker/login/forgotpassword" className='forgot-password'>Forgot Password?</Link>
           </div>
 
           <button className="j-login-btn">Login</button>

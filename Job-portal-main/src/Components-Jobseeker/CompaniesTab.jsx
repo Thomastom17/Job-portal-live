@@ -38,13 +38,13 @@ export const CompaniesTab = () => {
       <header className="header">
         <div className="logo">job portal</div>
         <nav className="nav-links">
-          <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
-          <Link to="/Job-portal/jobseeker/jobs" className="nav-item" >Jobs</Link>
+          <Link to="/Job-portal-live/jobseeker/" className="nav-item" >Home</Link>
+          <Link to="/Job-portal-live/jobseeker/jobs" className="nav-item" >Jobs</Link>
           <a href="#" className="nav-item nav-active">Companies</a>
         </nav>
 
         <div className="auth-links">
-          <Link to="/Job-portal/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
+          <Link to="/Job-portal-live/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
           <div><img className='header-icons' src={chat} alt='Messages' /></div>
           <div onClick={() => setShowNotification(!showNotification)}><img className='header-icons' src={newNotificationsCount > 0 ? bell_dot: bell} alt='Notifications' /></div>
           <AvatarMenu />
@@ -97,7 +97,7 @@ export const CompaniesTab = () => {
                 <span className="companies-tab-reviews">{company.reviewNo} reviews</span>
               </div>
               <p className="companies-tab-desc">{company.slogan}</p>
-              <button className="companies-tab-view-jobs-btn" onClick={()=>navigate(`/Job-portal/jobseeker/companies/${company.companyId}`)}>View Jobs</button>
+              <button className="companies-tab-view-jobs-btn" onClick={()=>navigate(`/Job-portal-live/jobseeker/companies/${company.companyId}`)}>View Jobs</button>
             </div>
           ))}
         </div>

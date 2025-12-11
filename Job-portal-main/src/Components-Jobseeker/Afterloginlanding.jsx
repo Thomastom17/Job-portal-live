@@ -15,6 +15,7 @@ import { JNotification } from './JNotification';
 import { useNavigate } from "react-router-dom";
 import { AvatarMenu } from './AvatarMenu';
 
+
 /* Below Code is removed after backend integration*/
 const notificationsData = [
     {
@@ -68,12 +69,13 @@ export const Afterloginlanding = () => {
                 <div className="logo">job portal</div>
                 <nav className="nav-links">
                     <a href="#" className="nav-item nav-active" >Home</a>
-                    <Link to="/Job-portal/jobseeker/jobs" className="nav-item" >Jobs</Link>
-                    <Link to="/Job-portal/jobseeker/companies" className="nav-item" >Companies</Link>
+                    <Link to="/Job-portal-live/jobseeker/jobs" className="nav-item" >Jobs</Link>
+                    <Link to="/Job-portal-live/jobseeker/companies" className="nav-item" >Companies</Link>
+   
                 </nav>
 
                 <div className="auth-links">
-                    <Link to="/Job-portal/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
+                    <Link to="/Job-portal-live/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
                     <div><img className='header-icons' src={chat} alt='Messages' /></div>
                     <div onClick={() => setShowNotification(!showNotification)}><img className='header-icons' src={newNotificationsCount > 0 ? bell_dot : bell} alt='Notifications' /></div>
                     <AvatarMenu />

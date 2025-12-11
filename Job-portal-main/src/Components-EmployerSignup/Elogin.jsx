@@ -55,15 +55,15 @@ export const Elogin = () => {
   return (
     <div className="login-page">
       <header className="login-header">
-        <Link to="/Job-portal" className="logo">
+        <Link to="/Job-portal-live" className="logo">
           <span className="logo-text">job portal</span>
           <span className='subtext'>for Employers</span>
         </Link>
         <div className="header-links">
           <span className='no-account'>Don’t have an account?</span>
-          <Link to="/Job-portal/employer/signup" className="signup-btn">Create</Link>
+          <Link to="/Job-portal-live/employer/signup" className="signup-btn">Create</Link>
           <div className="separator"></div>
-          <Link to="/Job-portal/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
+          <Link to="/Job-portal-liveJob-portal-live/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
         </div>
       </header>
 
@@ -88,7 +88,7 @@ export const Elogin = () => {
 
           <div className="form-options">
             <label><input type="checkbox" /> Remember me</label>
-            <Link to="/Job-portal/employer/login/forgotpassword" className='forgot-password'>Forgot Password?</Link>
+            <Link to="/Job-portal-live/employer/login/forgotpassword" className='forgot-password'>Forgot Password?</Link>
           </div>
 
           <button className="j-login-btn">Login</button>

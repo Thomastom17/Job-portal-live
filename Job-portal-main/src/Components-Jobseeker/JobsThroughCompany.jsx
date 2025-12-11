@@ -17,7 +17,7 @@ import Infy from '../assets/INFY_BIG.png'
 import META from '../assets/META_BIG.png'
 import Google from '../assets/GOOG.png'
 import { CompaniesList } from "../CompaniesList";
-import { Joblist } from "../Joblist";
+import { Joblist } from "../JobList";
 import { AvatarMenu } from './AvatarMenu';
 
 export const JobsThroughCompany = () => {
@@ -106,13 +106,13 @@ export const JobsThroughCompany = () => {
             <header className="header">
                 <div className="logo">job portal</div>
                 <nav className="nav-links">
-                    <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
-                    <Link to="/Job-portal/jobseeker/jobs" className="nav-item" >Jobs</Link>
-                    <Link to="/Job-portal/jobseeker/companies" className="nav-item" >Companies</Link>
+                    <Link to="/Job-portal-live/jobseeker/" className="nav-item" >Home</Link>
+                    <Link to="/Job-portal-live/jobseeker/jobs" className="nav-item" >Jobs</Link>
+                    <Link to="/Job-portal-live/jobseeker/companies" className="nav-item" >Companies</Link>
                 </nav>
 
                 <div className="auth-links">
-                    <Link to="/Job-portal/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
+                    <Link to="/Job-portal-live/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
                     <div><img className='header-icons' src={chat} alt='Messages' /></div>
                     <div><img className='header-icons' src={bell} alt='Notifications' /></div>
                     <AvatarMenu />

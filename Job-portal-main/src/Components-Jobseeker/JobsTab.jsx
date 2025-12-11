@@ -94,13 +94,13 @@ export const JobsTab = () => {
             <header className="header">
                 <div className="logo">job portal</div>
                 <nav className="nav-links">
-                    <Link to="/Job-portal/jobseeker/" className="nav-item" >Home</Link>
+                    <Link to="/Job-portal-live/jobseeker/" className="nav-item" >Home</Link>
                     <a href="#" className="nav-item nav-active" >Jobs</a>
-                    <Link to="/Job-portal/jobseeker/companies" className="nav-item" >Companies</Link>
+                    <Link to="/Job-portal-live/jobseeker/companies" className="nav-item" >Companies</Link>
                 </nav>
 
                 <div className="auth-links">
-                    <Link to="/Job-portal/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
+                    <Link to="/Job-portal-live/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
                     <div><img className='header-icons' src={chat} alt='Messages' /></div>
                     <div onClick={() => setShowNotification(!showNotification)}><img className='header-icons' src={newNotificationsCount > 0 ? bell_dot : bell} alt='Notifications' /></div>
                     <AvatarMenu />
