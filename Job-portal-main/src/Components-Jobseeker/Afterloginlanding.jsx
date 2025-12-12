@@ -86,7 +86,7 @@ export const Afterloginlanding = () => {
             <section className='Opportunities-section'>
                 <h2 className='Opportunities-title'>Opportunities Just For You</h2>
                 <Opportunities />
-                <button onClick={() => navigate('/Job-portal/jobseeker/jobs')} className="Opportunities-view-more-btn">View More</button>
+                <button onClick={() => navigate('/Job-portal-live/jobseeker/jobs')} className="Opportunities-view-more-btn">View More</button>
             </section>
             <Jobsbycompany />
             <Footer />

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Freshness.css'
+import JHeader from '../Jobseeker/JHeader'  
 
 const freshnessOptions = [
     { index: '1', value: 'Today' },
@@ -44,11 +45,13 @@ const handleSelectCompany = (e) => {
     } else {
       setCheckedlist(checkedlist.filter((item) => item !== value));
     }
-  };
+  };  
+  
 
 export default function Tom() {
   return (
     <>
+    
 
     <h1 className='quote'>Job Based On Your Search</h1>
     <div className='job-container-freshness'>
@@ -56,7 +59,7 @@ export default function Tom() {
       <div className='freshness-head'>
         
 
-        <h2>Top Companies</h2>
+        <h2>Job Freshness</h2>
       </div>
       <div className='freshness-options'>
         {freshnessOptions.map((option) => (
@@ -97,9 +100,7 @@ export default function Tom() {
 
       <button className='tom-button'>Viewmore</button>
 
-    
-
-    </div>
+      </div>
     
     
     </>
