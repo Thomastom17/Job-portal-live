@@ -4,10 +4,6 @@ import { Footer } from '../Components-LandingPage/Footer';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import './OpportunityOverview.css'
-import breifcase from '../assets/header_case.png'
-import chat from '../assets/header_message.png'
-import bell from '../assets/header_bell.png'
-import profile from '../assets/header_profile.png'
 import search from '../assets/icon_search.png'
 import location from '../assets/icon_location.png'
 import tick from '../assets/icon_tick.png'
@@ -20,7 +16,6 @@ import linkedin from '../assets/socials-linkedin.png'
 import facebook from '../assets/socials-facebook.png'
 import formatPostedDate from './OpportunitiesCard';
 import { Joblist } from '../JobList';
-import { AvatarMenu } from './AvatarMenu';
 
 export const OpportunityOverview = () => {
   const navigate = useNavigate();
@@ -29,28 +24,14 @@ export const OpportunityOverview = () => {
   const job = Joblist.find(singleJob => singleJob.id === id);
 
   const similarJobs = Joblist.filter((similarJob) => {
-    return similarJob.id !== job.id && similarJob.Department === job.Department;
+    return similarJob.id !== job.id && similarJob.Department.some(item => job.Department.includes(item));
   });
 
   const limitedSimilarJob = similarJobs.slice(0, 9);
 
   return (
     <>
-      <header className="header">
-        <div className="logo">job portal</div>
-        <nav className="nav-links">
-          <Link to="/Job-portal-live/jobseeker/" className="nav-item" >Home</Link>
-          <Link to="/Job-portal-live/jobseeker/jobs" className="nav-item" >Jobs</Link>
-          <Link to="/Job-portal-live/jobseeker/companies" className="nav-item" >Companies</Link>
-        </nav>
-
-        <div className="auth-links">
-          <Link to="/Job-portal-live/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
-          <div><img className='header-icons' src={chat} alt='Messages' /></div>
-          <div><img className='header-icons' src={bell} alt='Notifications' /></div>
-          <AvatarMenu />
-        </div>
-      </header>
+      <JHeader />
 
       <div className='opp-overview-content'>
         <div className='search-backbtn-container'>
@@ -156,10 +137,11 @@ export const OpportunityOverview = () => {
 
               <h3>Key Details:</h3>
               <p><strong>Role:</strong> {job.title}</p>
-              <p><strong>Industry Type:</strong> {job.IndustryType}</p>
-              <p><strong>Department:</strong> {job.Department}</p>
+              <p><strong>Industry Type:</strong> {job.IndustryType.join(", ")}</p>
+              <p><strong>Department:</strong> {job.Department.join(", ")}</p>
               <p><strong>Job Type:</strong> {job.WorkType}</p>
               <p><strong>Location:</strong> {job.location}</p>
+              <p><strong>Shift:</strong> {job.Shift}</p>
 
               <h3>Key Skills</h3>
               <div className="opp-key-skills-container">

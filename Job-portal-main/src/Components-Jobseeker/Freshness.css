@@ -1,30 +1,72 @@
-*{
+ *{
     font-family: poppins, sans-serif;
     /* margin: 0; */
-    padding: 0;
-}
-
-.job-container-freshness{
+    /* padding: 0; */
+ }
+ 
+.side-freshness{
     width: 250px;
     height: auto;
     /* border: 1px solid lightgray;
     border-radius: 5px; */
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
     padding: 10px;
+    /* box-sizing: border-box; */
+    position: sticky;
+    top: 10px;
 }
+.filter-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.filter-head h2{
+    font-size: 22px;
+    font-weight: 600;
+}
+.filter-head button{
+    font-size: 16px;
+    color: #b10000;
+    cursor: pointer;
+}
+
+
+.filter-button{
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.filter-button:hover{
+    background-color: #005f8d;
+}
+
+.job-container-freshness{
+    height: auto;
+    padding: 10px;
+}
+.job-container-freshness h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}   
 
 .quote{
     font-size: 30px;
     font-weight: 600;
-    margin-bottom: 10px;
-}  
-
-.freshness-head h2{
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
+    text-align: center;
+    margin-top: 120px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      
+} 
 
 .freshness-options{
     display: flex;
@@ -50,14 +92,8 @@
 
 
 .company-head{
-    width: 250px;
     height: auto;
-    /* border: 1px solid lightgray;
-    border-radius: 5px; */
-    margin-top: 20px;
-    margin-left: 20px;
     padding: 10px;
-    box-sizing: border-box;
 }
 
 

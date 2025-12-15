@@ -65,23 +65,7 @@ export const Afterloginlanding = () => {
 
     return (
         <>
-            <header className="header">
-                <div className="logo">job portal</div>
-                <nav className="nav-links">
-                    <a href="#" className="nav-item nav-active" >Home</a>
-                    <Link to="/Job-portal-live/jobseeker/jobs" className="nav-item" >Jobs</Link>
-                    <Link to="/Job-portal-live/jobseeker/companies" className="nav-item" >Companies</Link>
-   
-                </nav>
-
-                <div className="auth-links">
-                    <Link to="/Job-portal-live/jobseeker/myjobs"><img className='header-icons' src={breifcase} alt='My Jobs' /></Link>
-                    <div><img className='header-icons' src={chat} alt='Messages' /></div>
-                    <div onClick={() => setShowNotification(!showNotification)}><img className='header-icons' src={newNotificationsCount > 0 ? bell_dot : bell} alt='Notifications' /></div>
-                    <AvatarMenu />
-                </div>
-                <JNotification notificationsData={notificationsData} showNotification={showNotification} setShowNotification={setShowNotification} />
-            </header>
+            <JHeader /> 
             <JMainsection />
             <section className='Opportunities-section'>
                 <h2 className='Opportunities-title'>Opportunities Just For You</h2>
