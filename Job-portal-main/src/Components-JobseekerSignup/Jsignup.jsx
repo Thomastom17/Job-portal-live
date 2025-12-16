@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import workTime from '../assets/WorkTime.png'
 import Google from '../assets/GOOG.png'
 import eye from '../assets/show_password.png'
@@ -7,12 +7,16 @@ import eyeHide from '../assets/eye-hide.png'
 import './Jsignup.css'
 
 export const Jsignup = () => {
+  const navigate = useNavigate()
   const [passwordShow, setPasswordShow] = useState(true)
     
     const oneUpperCase = /^(?=.*[A-Z]).{8,}$/;
     const oneNumber = /^(?=.*[0-9]).{8,}$/;
     const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
-
+    const mobileRegex = /^\d{10}$/;
+    const AplhaRegex =/^(?=[a-zA-Z])\S+$/;
+    const Regexformin5 =/^[{5,20}]$/
+  
   const togglePasswordView = () => {
     setPasswordShow((prev) => !prev)
   }
@@ -31,11 +35,17 @@ export const Jsignup = () => {
   const validateForm = () => {
     const newErrors = {}
 
-    const regexOfMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    const regexOfMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!formValues.username.trim()) {
       newErrors.username = "Username is required"
-    }
+    } else if (formValues.username.length < 8 ) {
+      newErrors.username = "username must be at least 8 characters"
+    } else if (formValues.username.length > 18 ) {
+      newErrors.username = "username should not exceed 18 characters"
+    } else if (!AplhaRegex.test(formValues.username)){
+      newErrors.username = "invalid Format "
+    } 
 
     if (!formValues.email.trim()) {
       newErrors.email = "Email is required"
@@ -65,6 +75,13 @@ export const Jsignup = () => {
       newErrors.confirmPassword = "Passwords do not match"
     }
     
+    if (!formValues.phone){
+      newErrors.phone = ""
+    }
+     else if (!mobileRegex.test(formValues.phone)){
+      newErrors.phone = "Invalid format"
+    }
+    
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -74,7 +91,7 @@ export const Jsignup = () => {
     if (!validateForm()) {
       return false // stops form submit if errors
     }
-    console.log("Signed up successfully") // This Code is removed after backend integration
+   navigate ('/Job-portal-Live/jobseeker/login')
   }
 
   return (
@@ -100,7 +117,7 @@ export const Jsignup = () => {
           <h2>Sign up for Jobseeker</h2>
 
           <label>User name</label>
-          <input type="text" name="username" value={formValues.username} onChange={handleForm} placeholder="Enter your name" className={errors.username ? "input-error" : ""} />
+          <input type="text" name="username" value={formValues.username} onChange={handleForm} placeholder="Create your Username" className={errors.username ? "input-error" : ""} />
           {errors.username && <span className="error-msg">{errors.username}</span>}
 
           <label>Email ID</label>
@@ -123,6 +140,7 @@ export const Jsignup = () => {
 
           <label>Mobile number (optional)</label>
           <input type="tel" name="phone" value={formValues.phone} onChange={handleForm} placeholder="Enter your mobile number" />
+          {errors.phone && <span className="error-msg">{errors.phone}</span>}
 
           <button className="j-sign-up-submit">Signup</button>
 

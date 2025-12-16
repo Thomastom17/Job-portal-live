@@ -63,10 +63,10 @@ export const Jlogin = () => {
           <span className="logo-text">job portal</span>
         </Link>
         <div className="header-links">
-          <span className='no-account'>Don’t have an account?</span>
-          <Link to="/Job-portal/jobseeker/signup" className="signup-btn">Sign up</Link>
+          <span className='no-account'>Don't have an account?</span>
+          <Link to="/Job-portal-live/jobseeker/signup" className="signup-btn">Sign up</Link>
           <div className="separator"></div>
-          <Link to='/Job-portal/employer/login' className="employer-redirect-link">Employers Login</Link>
+          <Link to='/Job-portal-live/employer/login' className="employer-redirect-link">Employers Login</Link>
         </div>
       </header>
 

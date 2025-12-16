@@ -19,7 +19,10 @@ export const ESignup = () => {
     const oneUpperCase = /^(?=.*[A-Z]).{8,}$/;
     const oneNumber = /^(?=.*[0-9]).{8,}$/;
     const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
+    const mobileRegex = /^\d{10}$/;
+    const AplhaRegex =/^(?=[a-zA-Z])\S+$/;
     
+
       const handleForm = (e) => {
         const { name, value } = e.target
         setFormValues({ ...formValues, [name]: value })
@@ -36,8 +39,14 @@ export const ESignup = () => {
         }
     
         if (!formValues.username.trim()) {
-          newErrors.username = "Username is required"
-        }
+      newErrors.username = "Username is required"
+    } else if (formValues.username.length < 8 ) {
+      newErrors.username = "username must be at least 8 characters"
+    } else if (formValues.username.length > 18 ) {
+      newErrors.username = "username should not exceed 18 characters"
+    } else if (!AplhaRegex.test(formValues.username)){
+      newErrors.username = "invalid Format "
+    } 
     
         if (!formValues.email.trim()) {
           newErrors.email = "Email is required"
@@ -66,7 +75,12 @@ export const ESignup = () => {
     } else if (formValues.confirmPassword !== formValues.password) {
       newErrors.confirmPassword = "Passwords do not match"
     }
-    
+    if (!formValues.phone){
+      newErrors.phone = ""
+    }
+     else if (!mobileRegex.test(formValues.phone)){
+      newErrors.phone = "Invalid format"
+    }
         setErrors(newErrors)
         return Object.keys(newErrors).length === 0
       }
@@ -128,7 +142,7 @@ export const ESignup = () => {
   
             <label>Mobile number (optional)</label>
             <input type="tel" name="phone" value={formValues.phone} onChange={handleForm} placeholder="Enter your mobile number" />
-  
+            {errors.phone && <span className="error-msg">{errors.phone}</span>}
             <button className="j-sign-up-submit">Create Account</button>
           </form>
         </div>
