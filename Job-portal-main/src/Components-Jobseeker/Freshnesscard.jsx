@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import AppleLogo from '../assets/Apple-Logo.png'
 import time from '../assets/opportunity_time.png'
 import experience from '../assets/opportunity_bag.png'
@@ -16,7 +16,7 @@ function SearchResultsCard(props) {
 
     const logoContent = job.logo ? (<img src={job.logo} alt={job.company} className="SearchResults-job-card-job-logo" />) : (<div className="SearchResults-job-card-logo-placeholder">{job.company.charAt(0).toUpperCase()}</div>)
     const HandleClick = () => {
-        navigate(`/Job-portal-Live/jobseeker/OpportunityOverview/${job.id}`)
+        navigate(`/Job-portal-live/jobseeker/OpportunityOverview/${job.id}`)
     }
   return (
     

@@ -3,36 +3,13 @@ import './Freshness.css'
 import { JHeader } from './JHeader';
 import { Joblist } from '../JobList';
 import { useState } from 'react';
+import Freshnesscard from './Freshnesscard';
+import formatPostedDate from './OpportunitiesCard';
 
+export default function Tom() {
+  const [Slicedjobs, setSlicedjobs] = useState(Joblist.slice(0,5));
+  console.log(Joblist);
 
-
-// const freshnessOptions = [
-//     { index: '1', value: 'Today' },
-//     { index: '2', value: 'Yesterday' },
-//     { index: '3', value: '1 week ago' },
-//     { index: '4', value: '2 weeks ago' },
-//     { index: '5', value: '1 month ago' },
-//     { index: '6', value: '2 month ago' },
-
-// ];
-function formatPostedDate(dateString) {
-    const postedDate = new Date(dateString);
-    const today = new Date();
-
-    const diffInMs = today - postedDate;
-    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-
-    if (diffInDays === 0) return "Posted: today";
-    if (diffInDays === 1) return "Posted: 1 day ago";
-    if (diffInDays > 1 && diffInDays <= 30) return `Posted: ${diffInDays} days ago`;
-    if (diffInDays > 30 && diffInDays <= 60) return `Posted: 1+ month ago`;
-    if (diffInDays > 60 && diffInDays <= 90) return `Posted: 2+ months ago`;
-
-    return `Posted: Long ago`;
-  }
-// const Freshness = () => {
-//   const [checkedlist, setCheckedlist] = React.useState([]);
-// };
 
   const handleSelect = (e) => {
     const value = e.target.value;
@@ -46,11 +23,6 @@ function formatPostedDate(dateString) {
     
 };
 
-// const newcompanies = [
-//     { index: '1', value: 'Wipro' },
-//     { index: '2', value: 'Apple' },
-//     { index: '3', value: 'Amazon' },
-// ];
 const companies = () => {
   const [checkedlist, setCheckedlist] = React.useState([]);
 };
@@ -66,18 +38,15 @@ const handleSelectCompany = (e) => {
     }
   };  
   
-   
-  
-
-export default function Tom() {
-  const [Slicedjobs, setSlicedjobs] = useState(Joblist.slice(0,5));
+  const [Job, setjob] = useState(Joblist.slice(0,5));
   return (
     <>
     <JHeader/>  
   
     <h1 className='quote'>Job Based On Your Search</h1>
+    <div className='line'>
     
-    <aside className='side-freshness'>
+    <div className='side-freshness'>
       <div>
       <div className='filter-head'>
         <h2 className='apply-fil'>Apply Filters</h2>
@@ -91,24 +60,24 @@ export default function Tom() {
         <h2>Job Freshness</h2>
       
       <div className='freshness-options'>
-        {Slicedjobs.map((option) => (
-          <div key={option.index} className='freshness-option'>
+        {Slicedjobs.map((item) => (
+          <div key={item.index} className='freshness-option'>
             <input 
             
             type="checkbox" 
-            id={option.index} 
+            id={item.index} 
             name="freshness" 
             // value={formatPostedDate(option.posted)  }
             onChange={handleSelect} />
 
-            <label htmlFor={option.index}>{formatPostedDate(option.posted) }</label>
+            <label htmlFor={item.index}>{formatPostedDate(item.posted)} </label>
           
           </div>
           
         ))}
-
-        <button className='tom-button' onClick={(e)=> {setSlicedjobs(Joblist)}}>Viewmore</button>
       </div>
+        <button className='tom-button' onClick={(e)=> {setSlicedjobs(Joblist)}}>Viewmore</button>
+      
       </div>
       <hr />
 
@@ -117,30 +86,42 @@ export default function Tom() {
         <h2>Top Companies</h2>
       
       <div className='company-options'>
-        {Slicedjobs.map((option) => (
-          <div key={option.index} className='freshness-option'>
+        {Slicedjobs.map((item) => (
+          <div key={item.index} className='freshness-option'>
             <input 
             type="checkbox" 
-            id={option.index} 
+            id={item.index} 
             name="topcompanies" 
             // value={option.value}
             onChange={handleSelectCompany} />
 
-            <label htmlFor={option.index}>{option.company}</label>
+            <label htmlFor={item.index}>{item.company}</label>
             
           </div>
         ))}
       </div>
 
-      <button className='tom-button' onClick={()=> {setSlicedjobs(Joblist)}}>Viewmore</button>
+      <button className='bot-button' onClick={(e)=> {setSlicedjobs(Joblist)}}>Viewmore</button>
 
       </div>
     </div>
     <hr />
-      </aside> 
-      
-      
-      
+      </div> 
+      <div className='main-freshness'>
+        <div className='sortbySearch'>
+         <button className='sortbutton'>Sortby</button>
+                           
+        </div>
+    
+        {Job.map((job, index) => (
+          <div className='search-cards'>
+            <Freshnesscard key={index} job={job} />
+          </div>
+            
+          ))}
+        
+      </div>
+      </div>
 
     </>
   

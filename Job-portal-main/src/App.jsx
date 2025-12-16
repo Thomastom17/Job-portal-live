@@ -17,7 +17,8 @@ import { JobsTab } from './Components-Jobseeker/JobsTab'
 import { CompaniesTab } from './Components-Jobseeker/CompaniesTab'
 import { MyProfile } from './Components-Jobseeker/MyProfile'
 import { JobsThroughCompany } from './Components-Jobseeker/JobsThroughCompany'
-import  Freshness  from './Components-Jobseeker/Freshness'
+// import  Freshness  from './Components-Jobseeker/Freshness'
+import Newjobfreshness from './Components-Jobseeker/Newjobfreshness'
 
 
 const router = createBrowserRouter([
@@ -86,10 +87,15 @@ const router = createBrowserRouter([
   element: <JobsThroughCompany />,
 },
 
-{path: '/Job-portal-live/jobseeker/freshness',
-element: <Freshness />
-
+{
+  path: '/Job-portal-live/jobseeker/newjobfreshness',
+  element: <Newjobfreshness />,
 }
+// {path: '/Job-portal-live/jobseeker/freshness',
+// element: <Freshness />
+
+// }
+
 
 ])
 

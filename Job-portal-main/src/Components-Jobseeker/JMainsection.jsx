@@ -10,7 +10,7 @@ export const JMainsection = () => {
 
     const handleSearch = () => {
         // Implement search functionality here
-        navigate('/Job-portal-Live/jobseeker/Freshness');
+        navigate('/Job-portal-live/jobseeker/Newjobfreshness');
     };
     return (
         <main className="main-section">

@@ -3,14 +3,22 @@
     /* margin: 0; */
     /* padding: 0; */
  }
- 
+ .line{
+    /* width: 95%; */
+    display: grid;
+    grid-template-columns:30% 50%;
+    /* gap: 20px; */
+    background-color:rgb(211, 211, 211);
+    margin: 20px;
+    padding: 30px;
+ }
 .side-freshness{
-    width: 250px;
+    width: 400px;
     height: auto;
-    /* border: 1px solid lightgray;
+    /* border: 1px solid rgb(149, 8, 8);
     border-radius: 5px; */
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 50px;
     padding: 10px;
     /* box-sizing: border-box; */
     position: sticky;
@@ -31,8 +39,6 @@
     color: #b10000;
     cursor: pointer;
 }
-
-
 .filter-button{
     margin-top: 15px;
     padding: 8px 16px;
@@ -56,7 +62,6 @@
     font-weight: 500;
     margin-bottom: 10px;
 }   
-
 .quote{
     font-size: 30px;
     font-weight: 600;
@@ -65,38 +70,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-      
 } 
-
 .freshness-options{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-
 .freshness-option label{
     font-size: 16px;
     cursor: pointer;
 }
-
 .freshness-option input[type="checkbox"]{
     margin-right: 10px;
     width: 16px;
     height: 16px;
     cursor: pointer;
 }   
-
 .freshness-option input[type="checkbox"]:checked{
     accent-color: #0073b1;
 }
-
-
 .company-head{
     height: auto;
     padding: 10px;
 }
-
-
 .company-head h2{
     font-size: 20px;
     font-weight: 500;
@@ -120,7 +116,6 @@
 .company-option input[type="checkbox"]:checked{
     accent-color: #0073b1;
 }
-
 .tom-button{
     margin-top: 15px;
     padding: 8px 16px;
@@ -134,5 +129,48 @@
 .tom-button:hover{
     background-color: #005f8d;
 }
-
+.bot-button{
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.bot-button:hover{
+    background-color: #005f8d;
+}
+.job-results{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.search-cards{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-freshness{
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    /* margin: 0 100px; */
+    margin-left: 200px;
+}
+.sortbySearch{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.sortbutton{
+    background-color: #f3f2ef;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
 
