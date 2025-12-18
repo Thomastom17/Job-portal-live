@@ -4,13 +4,14 @@ import { Joblist } from '../JobList';
 import { JHeader } from './JHeader';
 import Freshnesscard from './Freshnesscard';
 import formatPostedDate from './OpportunitiesCard'; 
+import { Footer } from '../Components-LandingPage/Footer';
 
 const getUniqueValues = (list, key) => {
     if (key === 'posted') {
         const dates = list.map(item => formatPostedDate(item.posted));
         const sortedDates = Array.from(new Set(dates)).sort((a, b) => {
             if (a.includes('day') && b.includes('month')) return -1;
-            if (a.includes('month') && b.includes('day')) return 1;
+            if (a.includes('month') && b.includes('day')) return 1;   
             return 0; 
         });
         return sortedDates;
@@ -61,6 +62,7 @@ export default function Tom() {
         handleCheckboxChange(e.target.value, e.target.checked, checkedCompanies, setCheckedCompanies);
     };
 
+
     const handleClearAll = () => {
         setCheckedFreshness([]);
         setCheckedCompanies([]);
@@ -107,7 +109,7 @@ export default function Tom() {
                     <div>
                         <div className='filter-head'>
                             <h2 className='apply-fil'>Apply Filters</h2>
-                            <button className='clear-all' onClick={handleClearAll}>Clear All</button>
+                            <button className='clear-all' onClick={handleClearAll}>Clear Filter</button>
                         </div>
                         <hr />
 
@@ -200,7 +202,8 @@ export default function Tom() {
 
                 </div>
             </div>
-
+            
+            <Footer/>
         </>
     );
 }
