@@ -15,7 +15,7 @@ export const Jsignup = () => {
     const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
     const mobileRegex = /^\d{10}$/;
     const AplhaRegex =/^(?=[a-zA-Z])\S+$/;
-    const Regexformin5 =/^[{5,20}]$/
+    
   
   const togglePasswordView = () => {
     setPasswordShow((prev) => !prev)
@@ -69,16 +69,11 @@ export const Jsignup = () => {
 
     if (!formValues.confirmPassword.trim()) {
       newErrors.confirmPassword = "Confirm Password is required"
-    } else if (formValues.confirmPassword.length < 8) {
-      newErrors.confirmPassword = "Password must be at least 8 characters"
-    } else if (formValues.confirmPassword !== formValues.password) {
+    }else if (formValues.confirmPassword !== formValues.password) {
       newErrors.confirmPassword = "Passwords do not match"
     }
     
-    if (!formValues.phone){
-      newErrors.phone = ""
-    }
-     else if (!mobileRegex.test(formValues.phone)){
+    if (formValues.phone && !mobileRegex.test(formValues.phone)){
       newErrors.phone = "Invalid format"
     }
     
@@ -133,7 +128,7 @@ export const Jsignup = () => {
 
            <label>Confirm Password</label>
           <div className="password-wrapper">
-            <input type={passwordShow ? "password" : "text"} name="confirmPassword" value={formValues.confirmPassword} onChange={handleForm} placeholder="Create a new password" className={errors.password ? "input-error" : ""} />
+            <input type={passwordShow ? "password" : "text"} name="confirmPassword" value={formValues.confirmPassword} onChange={handleForm} placeholder="Create a new password" className={errors.confirmPassword ? "input-error" : ""} />
             <span className="eye-icon" onClick={togglePasswordView}><img src={passwordShow ? eye : eyeHide} className='show-icon' alt='show' /></span>
           </div>
           {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword}</span>}

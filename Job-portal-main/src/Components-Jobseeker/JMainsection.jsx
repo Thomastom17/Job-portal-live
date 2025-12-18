@@ -2,8 +2,12 @@ import React from 'react'
 import search from '../assets/icon_search.png'
 import location from '../assets/icon_location.png'
 import tick from '../assets/icon_tick.png'
+import { useNavigate } from 'react-router-dom'
+
 
 export const JMainsection = () => {
+
+    const navigate = useNavigate();
     return (
         <main className="main-section">
             <h1 className="headline">"Welcome Back!"</h1>
@@ -33,7 +37,7 @@ export const JMainsection = () => {
                     </select>
                 </div>
 
-                <button className="search-button">Search</button>
+                <button onClick={()=>{navigate('/Job-portal-Live/jobseeker/searchresults')}}className="search-button">Search</button>
             </div>
         </main>
     )
