@@ -154,6 +154,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
       }
     });
   };
+  
   const HandleWorkType = (event) => {
     const WorkType = event.target.value;
     const isChecked = event.target.checked;
@@ -316,7 +317,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
             <p className='filter-heading'>Apply Filters</p>
             <p onClick={HandleClear} className='filter-applied'>Clear Filters</p>
           </div>
-           {/* <div className='Search-Worktype-Container'>
+          <div className='Search-Worktype-Container'>
            
             <h4>Work Type</h4>
             {workTypeFilters.map(([work, workc]) => {
@@ -340,9 +341,9 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
                 </div>
               );
             })}
-          </div>  */}
+          </div> 
  
-          {/* <div className='Search-Worktype-Container'>
+          <div className='Search-Worktype-Container'>
             <h4>Location</h4>
             {locationFilters.map(([locationKey, count]) => {
               const displayLocation = locationKey.charAt(0).toUpperCase() + locationKey.slice(1);
@@ -373,7 +374,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
             </div>
  
  
-          </div>  */}
+          </div>
  
           <div className='Search-Worktype-Container'>
             <h4>Posted by</h4>
