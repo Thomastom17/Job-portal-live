@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react'
 import './MyProfile.css'
 import { Link } from 'react-router-dom';
 import addPhoto from '../assets/AddPhoto.png'
-import { notificationsData } from './Afterloginlanding';
-import { JNotification } from './JNotification';
 import editIcon from '../assets/EditIcon.png'
 import uploadIcon from '../assets/UploadIcon.png'
 import deleteIcon from '../assets/DeleteIcon.png'
@@ -49,8 +47,6 @@ const PopupModal = ({ title, isOpen, onClose, onSave, onDelete, mode, children }
 
 const Profile = ({ data, onChange, onReset, onNext }) => {
     const [errors, setErrors] = useState({});
-    const today = new Date().toISOString().split('T')[0];
-
 
     const handleChange = (e) => {
         onChange(e);
@@ -64,8 +60,6 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
         if (!data.fullName?.trim()) newErrors.fullName = "Full Name is required";
         if (data.gender === "Select") newErrors.gender = "Please select a gender";
         if (!data.dob) newErrors.dob = "Date of Birth is required";
-        else if (data.dob > today) {
-        newErrors.dob = "Date of Birth cannot be in the future";}
         if (data.maritalStatus === "Select") newErrors.maritalStatus = "Please select status";
         if (!data.nationality?.trim()) newErrors.nationality = "Nationality is required";
 
@@ -115,7 +109,7 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
                     </div>
                     <div className="form-group">
                         <label>Date of Birth</label>
-                        <input type="date" name="dob" max="Today" value={data.dob || ''} onChange={handleChange} className={errors.dob ? 'input-error' : ''} />
+                        <input type="date" name="dob" value={data.dob || ''} onChange={handleChange} className={errors.dob ? 'input-error' : ''} />
                         {errors.dob && <span className="error-message">{errors.dob}</span>}
                     </div>
                     <div className="form-group">
@@ -247,52 +241,15 @@ const ResumeSection = ({ data, onChange, onReset, onNext }) => (
 const EducationDetails = ({ data, onUpdateSSLC, onUpdateHSC, onUpdateGrad, onAddGrad, onRemoveGrad, onReset, onNext }) => {
     const [openSection, setOpenSection] = useState(null);
     const toggleSection = (id) => setOpenSection(openSection === id ? null : id);
-    const today = new Date().toISOString().split('T')[0];
-    const percentageReg = /^(\d{1,2}(\.\d{1,2})?|100(\.0{1,2})?)%?$/
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if(!data.sslc.institution || !data.sslc.percentage) {
-    //         alert("Please fill at least the SSLC details.");
-    //         return;
-    //     }
-    //     onNext();
-    // };
-
-    const [errors, setErrors] = useState({});
-    // const handleChange = (e) => { onChange(e); if(errors[e.target.name]) setErrors({...errors, [e.target.name]: ''}); };
-    
-
-     const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const newErrors = {};
-        if (!data.sslc.institution) newErrors.sslcinstitution = "Required";
-        if (!data.sslc.percentage) newErrors.sslcpercentage = "Required";
-        else if (!percentageReg.test(data.sslc.percentage)) newErrors.sslcpercentage = "Invalid format";
-        if (!data.sslc.location) newErrors.sslclocation = "Required";
-        if (!data.sslc.year) newErrors.sslcyear = "Date Of Year Required";
-        else if (data.sslc.year > today) {
-        newErrors.sslcyear = "Year cannot be in the future";}
-
-
-        if (!data.hsc.stream ||data.hsc.stream === 'Select') newErrors.hscstream = 'Select atleast One';
-        if (!data.hsc.institution) newErrors.hscinstitution = "Required";
-        if (!data.hsc.percentage) newErrors.hscpercentage = "Required";
-         else if (!percentageReg.test(data.hsc.percentage)) newErrors.hscpercentage = "Invalid format";
-        if (!data.hsc.location) newErrors.hsclocation = "Required";
-        if (!data.hsc.year) newErrors.hscyear = "Date Of Year Required";
-        else if (data.hsc.year > today) {
-        newErrors.hscyear = "Year cannot be in the future";}
-    
-        
-        setErrors(newErrors);
-        if (Object.keys(newErrors).length === 0) {
-            onNext();
-        } else {
-            alert("Please fill all required fields.");
+        if(!data.sslc.institution || !data.sslc.percentage) {
+            alert("Please fill at least the SSLC details.");
+            return;
         }
+        onNext();
     };
-
 
     return (
         <form className="content-card" onSubmit={handleSubmit}>
@@ -317,17 +274,10 @@ const EducationDetails = ({ data, onUpdateSSLC, onUpdateHSC, onUpdateGrad, onAdd
                     {openSection === 'sslc' && (
                         <div className="accordion-body">
                             <div className="form-grid">
-                                <div className="form-group"><label>Name of Institution</label><input type="text" name="institution" value={data.sslc.institution} onChange={onUpdateSSLC} placeholder="e.g., XYZ School" />
-                                {errors.sslcinstitution && <span className="error-msg">{errors.sslcinstitution}</span>} </div>
-
-                                <div className="form-group"><label>Percentage</label><input type="text" name="percentage" value={data.sslc.percentage} onChange={onUpdateSSLC} placeholder="e.g., 80%" />
-                                {errors.sslcpercentage && <span className="error-msg">{errors.sslcpercentage}</span>}</div>
-
-                                <div className="form-group"><label>Location</label><input type="text" name="location" value={data.sslc.location} onChange={onUpdateSSLC} placeholder="e.g., Bangalore" />
-                                {errors.sslclocation && <span className="error-msg">{errors.sslclocation}</span>}</div>
-
-                                <div className="form-group"><label>Year of completion</label><input type="date" name="year" value={data.sslc.year} onChange={onUpdateSSLC} />
-                                {errors.sslcyear && <span className="error-msg">{errors.sslcyear}</span>}</div>
+                                <div className="form-group"><label>Name of Institution</label><input type="text" name="institution" value={data.sslc.institution} onChange={onUpdateSSLC} placeholder="e.g., XYZ School" /></div>
+                                <div className="form-group"><label>Percentage</label><input type="text" name="percentage" value={data.sslc.percentage} onChange={onUpdateSSLC} placeholder="e.g., 80%" /></div>
+                                <div className="form-group"><label>Location</label><input type="text" name="location" value={data.sslc.location} onChange={onUpdateSSLC} placeholder="e.g., Bangalore" /></div>
+                                <div className="form-group"><label>Year of completion</label><input type="date" name="year" value={data.sslc.year} onChange={onUpdateSSLC} /></div>
                             </div>
                         </div>
                     )}
@@ -348,16 +298,11 @@ const EducationDetails = ({ data, onUpdateSSLC, onUpdateHSC, onUpdateGrad, onAdd
                                         <option value="Intermediate">Intermediate/12</option>
                                         <option value="Diploma">Diploma</option>
                                     </select>
-                                    {errors.hscstream && <span className="error-msg">{errors.hscstream}</span>}
                                 </div>
-                                <div className="form-group"><label>Name of Institution</label><input type="text" name="institution" value={data.hsc.institution} onChange={onUpdateHSC} placeholder="e.g., XYZ School" />
-                                 {errors.hscinstitution && <span className="error-msg">{errors.hscinstitution}</span>}</div>
-                                <div className="form-group"><label>Location</label><input type="text" name="location" value={data.hsc.location} onChange={onUpdateHSC} placeholder="e.g., Bangalore" />
-                                {errors.hsclocation && <span className="error-msg">{errors.hsclocation}</span>}</div>
-                                <div className="form-group"><label>Year of completion</label><input type="date" name="year" value={data.hsc.year} onChange={onUpdateHSC} />
-                                 {errors.hscyear && <span className="error-msg">{errors.hscyear}</span>}</div>
-                                <div className="form-group"><label>Percentage</label><input type="text" name="percentage" value={data.hsc.percentage} onChange={onUpdateHSC} placeholder="e.g., 80%" />
-                                {errors.hscpercentage && <span className="error-msg">{errors.hscpercentage}</span>}</div>
+                                <div className="form-group"><label>Name of Institution</label><input type="text" name="institution" value={data.hsc.institution} onChange={onUpdateHSC} placeholder="e.g., XYZ School" /></div>
+                                <div className="form-group"><label>Location</label><input type="text" name="location" value={data.hsc.location} onChange={onUpdateHSC} placeholder="e.g., Bangalore" /></div>
+                                <div className="form-group"><label>Year of completion</label><input type="date" name="year" value={data.hsc.year} onChange={onUpdateHSC} /></div>
+                                <div className="form-group"><label>Percentage</label><input type="text" name="percentage" value={data.hsc.percentage} onChange={onUpdateHSC} placeholder="e.g., 80%" /></div>
                             </div>
                         </div>
                     )}
@@ -642,8 +587,6 @@ const Preferences = ({ data, onChange, onReset, onSubmitFinal }) => (
 // --- MAIN COMPONENT ---
 
 export const MyProfile = () => {
-    const [showNotification, setShowNotification] = useState(false);
-    const newNotificationsCount = notificationsData.filter(n => n.isNew).length;
     const [openDropdown, setOpenDropdown] = useState('Basic Details');
     const [activeItem, setActiveItem] = useState('Profile');
 
@@ -781,8 +724,7 @@ export const MyProfile = () => {
 
     return (
         <div>
-
-            <JHeader/>
+            <JHeader />
             <main>
                 <div className='profile-main-desc'>
                     <h1>My Profile</h1>
