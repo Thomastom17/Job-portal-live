@@ -36,7 +36,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 40px 60px;
-}
+} 
 
 .j-sign-up-form {
   max-width: 500px;
@@ -84,4 +84,41 @@ body {
   cursor: pointer;
 }
 
-
+@media (max-width: 768px) {
+  .j-sign-up-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 10px;
+  }
+ 
+  .j-sign-up-header-links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 14px;
+  }
+ 
+  .j-sign-up-body {
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px;
+  }
+ 
+  .signup-illustration {
+    display: none;
+  }
+ 
+  .j-sign-up-form {
+    margin: 0 auto;
+    max-width: 420px;
+    width: 100%;
+    transform: none;
+  }
+ 
+  .j-sign-up-form h2 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

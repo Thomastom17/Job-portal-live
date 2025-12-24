@@ -92,7 +92,7 @@ export const Jsignup = () => {
         <div className="signup-illustration">
           <img src={workTime} alt="Signup Illustration" />
         </div>
-
+      
         <form action={handleSubmit} className="j-sign-up-form">
           <h2>Sign up for Jobseeker</h2>
 
