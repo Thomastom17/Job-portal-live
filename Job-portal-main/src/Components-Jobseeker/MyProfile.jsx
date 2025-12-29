@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react'
 import './MyProfile.css'
 import profile from '../assets/header_profile.png'
 import addPhoto from '../assets/AddPhoto.png'
-import { notificationsData } from './Afterloginlanding';
 import editIcon from '../assets/EditIcon.png'
 import uploadIcon from '../assets/UploadIcon.png'
 import deleteIcon from '../assets/DeleteIcon.png'
@@ -704,8 +703,6 @@ const Preferences = ({ data, onChange, onReset,onSubmitFinal }) => {
 // --- MAIN COMPONENT ---
 
 export const MyProfile = () => {
-    const [showNotification, setShowNotification] = useState(false);
-    const newNotificationsCount = notificationsData.filter(n => n.isNew).length;
     const [openDropdown, setOpenDropdown] = useState('Basic Details');
     const [activeItem, setActiveItem] = useState('Profile');
 
