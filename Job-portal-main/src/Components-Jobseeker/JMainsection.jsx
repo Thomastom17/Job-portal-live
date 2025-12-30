@@ -1,4 +1,5 @@
 import React, { use } from 'react'
+import './JMainsection.css'
 import search from '../assets/icon_search.png'
 import location from '../assets/icon_location.png'
 import tick from '../assets/icon_tick.png'

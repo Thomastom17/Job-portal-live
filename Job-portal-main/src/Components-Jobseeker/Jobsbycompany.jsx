@@ -1,4 +1,5 @@
 import React from 'react'
+import './Jobsbycompany.css'
 import Slider from "react-slick";
 import Wipro from '../assets/WIT.png'
 import CTS from '../assets/CTSH_BIG.png'

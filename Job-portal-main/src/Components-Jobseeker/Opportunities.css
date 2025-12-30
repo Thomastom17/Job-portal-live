@@ -37,3 +37,16 @@
   background: #1E88E5;
   color: #fff;
 }
+
+@media (max-width: 768px) {
+    .Opportunities-job-list {
+        display: flex;
+        flex-direction: column; 
+        gap: 16px;              
+        padding: 0 15px;        
+    }
+
+    .Opportunities-job-list > div {
+        width: 100% !important;
+    }
+}

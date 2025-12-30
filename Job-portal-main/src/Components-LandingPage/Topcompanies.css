@@ -1,10 +1,10 @@
 .carousel-wrapper {
   padding: 1px;
   max-width: 100%;
-  margin: auto;
   font-family: Arial, sans-serif;
   background-color: white;
   background-size: cover;
+  margin-top: 50px;
 }
 
 .carousel-title {
@@ -33,7 +33,7 @@
 }
 
 .carousel-company-logo {
-  height: 40px;
+  height: 32px;
   width: auto;
   object-fit: contain;
   margin: 0 auto 2rem;
@@ -140,4 +140,46 @@
 
 .custom-arrow.prev {
   left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  
+  .carousel-wrapper {
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .carousel-title {
+    font-size: 28px; 
+    margin-bottom: 40px; 
+    padding: 0 10px;
+  }
+
+  
+  .carousel-card {
+    margin-left: 0 !important;   
+    margin: 0 auto 20px auto;    
+    width: 80% !important;      
+    max-width: 300px;            
+  }
+
+  
+  .carousel-card-header {
+    width: auto;                
+    margin-left: 0;              
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+  .custom-arrow {
+    display: none !important;
+  }
+
+  
+  .carousel-view-all-wrapper {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
 }
