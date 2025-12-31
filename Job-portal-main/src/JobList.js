@@ -9,7 +9,7 @@ import metaLogo from './assets/META_BIG.png'
 
 
 export const Joblist = [
-  {
+  { 
     id: "62",
     title: "Software Engineer",
     company: "Apple IN",

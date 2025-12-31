@@ -13,7 +13,6 @@ import right from '../assets/right_arrow.png'
 import { useNavigate } from "react-router-dom";
 import { CompaniesList } from "../CompaniesList";
 
-/* Below Code is removed after backend integration*/
 const findbyCompaniesNameList = CompaniesList.slice(0,8)
 
 export const Jobsbycompany = () => {

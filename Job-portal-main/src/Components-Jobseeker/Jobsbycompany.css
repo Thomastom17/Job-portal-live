@@ -28,3 +28,21 @@
         margin-top: 10px;
     }
 }
+.carousel-wrapper {
+  padding: 40px 20px;
+  overflow: hidden;
+}
+ 
+.carousel-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  height: auto;
+}
+ 
+.slick-slide {
+  display: flex ;
+  justify-content: center;
+}
