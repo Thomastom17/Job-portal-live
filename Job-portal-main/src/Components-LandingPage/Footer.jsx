@@ -9,7 +9,7 @@ export const Footer = () => {
         <div className="footer-link-section">
           <h2 className="footer-logo">job portal</h2>
           <p className="tagline">Where Ambition Meets<br />Opportunity</p>
-          <div>
+          <div className='social-links'>
             <i className="fab fa-linkedin-in social-icon"></i>
             <i className="fab fa-facebook-f social-icon"></i>
             <i className="fab fa-x-twitter social-icon"></i>
