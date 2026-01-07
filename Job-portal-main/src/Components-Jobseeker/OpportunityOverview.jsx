@@ -1,8 +1,8 @@
 import React from 'react'
-import { JHeader } from './JHeader';
+import { Header } from '../Components-LandingPage/Header';
 import { Footer } from '../Components-LandingPage/Footer';
 import { Link, useParams } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import './OpportunityOverview.css'
 import breifcase from '../assets/header_case.png'
 import chat from '../assets/header_message.png'
@@ -37,7 +37,7 @@ export const OpportunityOverview = () => {
  
   return (
     <>
-      <JHeader />
+      <Header />
       <div className='opp-overview-content'>
         <div className='search-backbtn-container'>
           <button className="back-btn" onClick={() => navigate(-1)}>Back</button>

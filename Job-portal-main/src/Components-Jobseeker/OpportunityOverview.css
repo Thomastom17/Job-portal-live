@@ -171,7 +171,6 @@ ul {
   margin-bottom: 17px;
   padding-left: 10px;
   padding-right: 10px;
-  cursor: pointer;
 }
 
 .similar-job-title {
@@ -214,19 +213,27 @@ ul {
 }
 
 @media (max-width: 768px) {
+
   .opp-overview-content {
-    margin-top: 8rem;
+    margin-top: 8rem; 
     margin-left: 15px; 
     margin-right: 15px;
     margin-bottom: 5rem;
   }
 
+  .back-btn{
+    display: none;
+  }
   
-  .back-btn {
-  display: none;
+  .search-backbtn-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    margin-bottom: 3rem;
   }
 
   .search-bar {
+    margin-top: 50px;
     flex-direction: column;
     padding: 10px;
     height: auto;
@@ -242,11 +249,11 @@ ul {
     padding-bottom: 10px;
   }
 
+  
   .opp-overview-main {
     flex-direction: column;
   }
 
-  
   .opp-overview-job-card, 
   .opp-job-details-card, 
   .opp-job-sidebar {
@@ -261,6 +268,7 @@ ul {
     width: 100%;
   }
 
+  
   .opp-topcard-job-title {
     font-size: 1.2rem;
   }
@@ -272,10 +280,6 @@ ul {
   .Opportunities-job-logo {
     width: 45px;
     height: 45px;
-  }
-
-  .opportunities-divider :last-child  {
-    display: none;
   }
 
   .hide-on-mobile {
@@ -299,6 +303,7 @@ ul {
     padding: 12px 0;
   }
 
+  
   .opp-share-job {
     flex-direction: column;
     align-items: flex-start;
