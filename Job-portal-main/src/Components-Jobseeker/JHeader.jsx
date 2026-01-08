@@ -57,7 +57,7 @@ export const JHeader = () => {
   const NavLinks = [
     { name: 'Home', path: '/Job-portal-live/jobseeker/' },
     { name: 'Jobs', path: '/Job-portal-live/jobseeker/jobs' },
-    { name: 'Companies', path: '/Job-portal/jobseeker/companies' },
+    { name: 'Companies', path: '/Job-portal-live/jobseeker/companies' },
   ]
  
   return (

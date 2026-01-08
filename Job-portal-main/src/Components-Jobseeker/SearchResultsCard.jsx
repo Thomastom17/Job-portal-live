@@ -4,10 +4,8 @@ import time from '../assets/opportunity_time.png'
 import experience from '../assets/opportunity_bag.png'
 import place from '../assets/opportunity_location.png'
 import formatPostedDate from './OpportunitiesCard';
-import "./freshnesscard.css"
-import { Joblist } from '../JobList';
 import { useNavigate } from 'react-router-dom';
-
+import './SearchResultsCard.css'
 
 
 function SearchResultsCard(props) {

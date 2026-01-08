@@ -1,17 +1,18 @@
-import React, { useEffect, useState, useMemo } from 'react'
-import { JHeader } from './JHeader'
+import React, { useState, useMemo } from 'react'
+import { Header } from '../Components-LandingPage/Header'
 import search from '../assets/icon_search.png'
 import location from '../assets/icon_location.png'
 import tick from '../assets/icon_tick.png'
-import './Freshness.css'
+import './SearchResultsPage.css'
 import { Joblist } from '../JobList'
 import { Footer } from '../Components-LandingPage/Footer'
-import { SavedJobsCard } from './SavedJobsCard'
+import SearchResultsCard from './SearchResultsCard'
+
  
  
  
   
-const Freshness = () => {
+const SearchResultsPage = () => {
  
 const countPropertyOccurrences = (data, property) => {
   return data.reduce((acc, item) => {
@@ -61,7 +62,7 @@ const educationCounts = Joblist.reduce((acc, item) => {
   return acc;
 }, {});
  
-const InduntryCounts = Joblist.reduce((acc, item) => {
+const IndustryCounts = Joblist.reduce((acc, item) => {
   item.IndustryType.forEach((int )=> {
     // Normalize to lowercase to avoid "MBA" vs "mba" issues
     const degree = int.toLowerCase();
@@ -71,14 +72,13 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
 }, {});
  
  
- 
 // Usage:
   const locationCounts = countPropertyOccurrences(Joblist, 'location');
   const workTypeCounts = countPropertyOccurrences(Joblist, 'WorkType');
   const PostedbyCounts = countPropertyOccurrences(Joblist,'PostedBy')
   const CompanyCounts = countPropertyOccurrences(Joblist,'company');
   const PostedDtCounts = countPostedDate(Joblist,'posted')
- 
+
  
  
  
@@ -89,8 +89,8 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
   const TopcompanyArray = Object.entries(CompanyCounts);
   const checkboxList = Object.entries(educationCounts);
   const PostedDateArray = Object.entries(PostedDtCounts);
-  const IndustryType = Object.entries(InduntryCounts);
- 
+  const IndustryType = Object.entries(IndustryCounts);
+ console.log(IndustryType)
  
  
   const [locationFilters, setLocationFilters] = useState(locationArray.slice(0,5));
@@ -99,7 +99,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
   const [CompanyFilter, setCompanyFilter] = useState(TopcompanyArray.slice(0,5));
   const [EducationFilter, setEducationFilter] = useState(checkboxList.slice(0,5));
   const [PostedDateFilter, setPostedDateFilter] = useState(PostedDateArray);
-   const [IndustryTypeFilter, setIndustryTypeFilter] = useState(IndustryType.slice(0,5));
+  const [IndustryTypeFilter, setIndustryTypeFilter] = useState(IndustryType.slice(0,5));
  
  
  
@@ -276,7 +276,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
  
   return (
     <>
-      <JHeader />
+      <Header />
       <div className='jobs-tab-search-bar'>
         <div className="search-bar">
           <div className="search-field">
@@ -302,7 +302,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
             </select>
           </div>
  
-          <button onClick={() => navigate('/Job-portal/jobseeker/myprofile/SearchResults')} className="search-button">Search</button>
+          <button onClick={() => navigate('/Job-portal/jobseeker/myprofile/searchresults')} className="search-button">Search</button>
         </div>
       </div>
       <div className='search-result-title'>
@@ -380,6 +380,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
             <h4>Posted by</h4>
             {PostedbyFilter.map(([post, count]) => {  
               const Postedby = post.charAt(0).toUpperCase() + post.slice(1);
+              console.log(PostedbyFilter)
               return (
                 <div key={post}>
                   <label htmlFor={`postedby-${post}`} className="location-checkbox-label">
@@ -430,6 +431,35 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
  
           </div>
  
+          {/* <div className='Search-Worktype-Container'>
+            <h4>Education</h4>
+            {EducationFilter.map(([edu,count]) => {
+              const Education = edu.charAt(0).toUpperCase() + edu.slice(1);
+              return (
+                <div key={edu}>
+                  <label htmlFor={`Education-${edu}`} className="location-checkbox-label">  
+                    <input
+                      type="checkbox"
+                      id={`Education-${edu}`}
+                      name="Education"
+                      value={edu}
+                      onChange={HandleEducation}
+                      checked={SelectedEducation.includes(edu)}
+                    />
+                    <span className="location-text">
+                      {Education}
+                      {count > 1 && `(${count})`}
+                    </span>
+                  </label>
+                </div>
+              );
+            })}
+            <div className='viewmore-cont'>
+              <button onClick={handleCompanyViewMore} className='viewmore-btn'>{ TopCompanyExpanded ? 'View Less' : 'View More'}</button>
+            </div>
+ 
+          </div> */}
+
           <div className='Search-Worktype-Container'>
             <h4>Education</h4>
             {EducationFilter.map(([edu,count]) => {
@@ -520,7 +550,7 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
           {/* <h4>Search Results:</h4> */}
           {filteredJobs.map((jb, index) =>
             <div key={index} className='jobs-card'>
-              <SavedJobsCard job={jb} />
+              <SearchResultsCard job={jb} />
             </div>
           )}
  
@@ -532,6 +562,6 @@ const InduntryCounts = Joblist.reduce((acc, item) => {
   )
 }
  
-export default Freshness
+export default SearchResultsPage
  
  

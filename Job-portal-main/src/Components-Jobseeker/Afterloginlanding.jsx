@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Afterloginlanding.css'
-    import { Header } from '../Components-LandingPage/Header';
+import { Header } from '../Components-LandingPage/Header';
 import { JMainsection } from './JMainsection';
 import { Jobsbycompany } from './Jobsbycompany';
 import { Opportunities } from './Opportunities';

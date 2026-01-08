@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import './Newjobfreshness.css';
 import { Joblist } from '../JobList'; 
-import { JHeader } from './JHeader';
+import { Header } from '../Components-LandingPage/Header';
 import Freshnesscard from './Freshnesscard';
 import formatPostedDate from './OpportunitiesCard'; 
 import { Footer } from '../Components-LandingPage/Footer';
@@ -99,7 +99,7 @@ export default function Tom() {
     
     return (
         <>
-            <JHeader/> 
+            <Header/> 
 
             <h1 className='quote'>Job Based On Your Search</h1>
             <div className='line'>
