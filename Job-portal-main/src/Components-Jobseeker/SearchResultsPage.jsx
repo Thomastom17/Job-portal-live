@@ -7,9 +7,6 @@ import './SearchResultsPage.css'
 import { Joblist } from '../JobList'
 import { Footer } from '../Components-LandingPage/Footer'
 import SearchResultsCard from './SearchResultsCard'
-
- 
- 
  
   
 const SearchResultsPage = () => {
