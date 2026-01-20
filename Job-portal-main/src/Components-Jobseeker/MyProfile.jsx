@@ -510,34 +510,161 @@ const Certifications = ({ certs, onAdd, onUpdate, onDelete, onReset, onNext }) =
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
     const [currentCert, setCurrentCert] = useState({ name: "", file: null });
-
-    const openAdd = () => { setEditIndex(null); setCurrentCert({ name: "", file: null }); setIsModalOpen(true); };
-    const openEdit = (index) => { setEditIndex(index); setCurrentCert(certs[index]); setIsModalOpen(true); };
-
+    const [errors, setErrors] = useState({});
+    const [showMenu, setShowMenu] = useState(false);
+ 
+ 
+    const openAdd = () => {
+        setEditIndex(null);
+        setCurrentCert({ name: "", file: null });
+        setIsModalOpen(true);
+    };
+ 
+    const openEdit = (index) => {
+        setEditIndex(index);
+        setCurrentCert(certs[index]);
+        setIsModalOpen(true);
+    };
+ 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setCurrentCert({ ...currentCert, file });
+        }
+    };
+ 
+ 
     const handleSave = () => {
-        if (currentCert.name.trim()) {
-            if (editIndex !== null) onUpdate(editIndex, currentCert);
-            else onAdd(currentCert);
+        if (!currentCert.name.trim()) return;
+ 
+        if (editIndex !== null) {
+            onUpdate(editIndex, currentCert);
+        } else {
+            onAdd(currentCert);
+        }
+ 
+        setIsModalOpen(false);
+    };
+ 
+    const handleDelete = () => {
+        if (editIndex !== null) {
+            onDelete(editIndex);
             setIsModalOpen(false);
         }
     };
-
-    const handleDelete = () => { if (editIndex !== null) { onDelete(editIndex); setIsModalOpen(false); } };
-
+ 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = {};
+ 
+        if (certs.length === 0) {
+            newErrors.certs = "Add atleast one certificate";
+        }
+ 
+        setErrors(newErrors);
+ 
+        if (Object.keys(newErrors).length === 0) {
+            onNext();
+        }
+    };
+ 
     return (
-        <form className="content-card" onSubmit={(e) => { e.preventDefault(); onNext(); }}>
+        <form className="content-card" onSubmit={handleSubmit}>
             <div className="profile-header">
                 <h2>Certifications</h2>
-                <button type="button" className="reset-link" onClick={onReset}>Reset</button>
+                <button
+                    type="button"
+                    className="reset-link"
+                    onClick={onReset}
+                >
+                    Reset
+                </button>
             </div>
+ 
             <div className="skills-list">
-                {certs.map((cert, index) => (<EditableListItem key={index} title={cert.name} onEdit={() => openEdit(index)} />))}
+                {certs.map((cert, index) => (
+                    <EditableListItem
+                        key={index}
+                        title={cert.name}
+                        onEdit={() => openEdit(index)}
+                    />
+                ))}
             </div>
-            <button type="button" className="add-link" onClick={openAdd}>+ Add another certification</button>
-            <div className="form-actions"><button type="submit" className="btn btn-primary">Save & Continue</button></div>
-            <PopupModal title={editIndex !== null ? "Edit Certification" : "Add Certification"} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} onDelete={handleDelete} mode={editIndex !== null ? 'edit' : 'add'}>
-                <div className="form-group" style={{marginBottom:'1rem'}}><label>Certification Name *</label><input type="text" value={currentCert.name} onChange={(e) => setCurrentCert({...currentCert, name: e.target.value})} placeholder="e.g., Full-stack development" /></div>
-                <div className="form-group"><label>Upload Certificate (PDF, PNG, JPEG)</label><div style={{border:'1px solid #ddd', padding:'8px', borderRadius:'6px', display:'flex', alignItems:'center', justifyContent:'space-between', background:'#fff'}}><span style={{color: currentCert.file ? '#333' : '#999', fontSize:'0.9rem'}}>{currentCert.file ? "File Selected" : "Not Uploaded"}</span><span style={{fontSize:'1.2rem', color:'#666'}}>⋮</span></div></div>
+ 
+            {errors.certs && (
+                <span className="error-message">{errors.certs}</span>
+            )}
+ 
+            <button
+                type="button"
+                className="add-link"
+                onClick={openAdd}
+            >
+                + Add another certification
+            </button>
+ 
+            <div className="form-actions">
+                <button type="submit" className="btn btn-primary">
+                    Save & Continue
+                </button>
+            </div>
+ 
+            <PopupModal
+                title={editIndex !== null ? "Edit Certification" : "Add Certification"}
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onSave={handleSave}
+                onDelete={handleDelete}
+                mode={editIndex !== null ? "edit" : "add"}
+            >
+ 
+                <div className="form-group">
+                    <label>Certification Name *</label>
+                    <input
+                        type="text"
+                        value={currentCert.name}
+                        onChange={(e) =>
+                            setCurrentCert({
+                                ...currentCert,
+                                name: e.target.value,
+                            })
+                        }
+                        placeholder="e.g., Full-stack development"
+                    />
+                </div>
+                <div className="form-group"><label>Upload Certificate (PDF, PNG, JPEG)</label>
+                <input
+                type="file"
+                id="certUpload"
+                className="file-input"
+                accept=".pdf,.png,.jpg,.jpeg"
+                onChange={handleFileChange}/>
+                <div className="choose-file-container"onClick={() => document.getElementById("certUpload").click()}>
+                    Choose File
+                </div>
+                {currentCert.file && (<div className="uploaded-file-container">
+                    <span className="uploaded-file-name">
+                {currentCert.file.name} </span>
+                <div className="cert-menu-wrapper"onClick={(e) => e.stopPropagation()}>
+                    <span className="cert-upload-icon" onClick={() => setShowMenu(!showMenu)} > ⋮ </span>
+ 
+                {showMenu && (
+                    <div className="cert-menu">
+                        <button
+                            type="button"
+                            className="cert-menu-item"
+                            onClick={() => {
+                                setCurrentCert({ ...currentCert, file: null });
+                                setShowMenu(false);
+                            }}>Delete
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    )}
+        </div>
+               
             </PopupModal>
         </form>
     );

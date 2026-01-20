@@ -30,7 +30,7 @@
   overflow: hidden;        
 }
  
-.menu-item {
+.menu-items {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -44,7 +44,7 @@
   box-sizing: border-box;    
 }
  
-.menu-item:hover {
+.menu-items:hover {
   background: #f5f7fb;
 }
  
@@ -54,7 +54,7 @@
   margin: 10px 0;
 }
  
-.logout-btn {
+.avatar-logout-btn {
   color: #0066ff;
   background: none;
   border: none;
@@ -72,3 +72,4 @@
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
+ 
