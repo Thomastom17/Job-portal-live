@@ -76,7 +76,32 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
             alert("Please fill all required fields.");
         }
     };
+    const triggerInput = () => {
+        document.getElementById('profilephoto').click();
+    };
 
+    // 2. Photo select pannum podhu state-kku anuppura logic
+    const handleFileEvent = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            handleChange({
+                target: {
+                    name: 'profilePhoto',
+                    value: file
+                }
+            });
+        }
+    };
+
+    // 3. Remove Photo logic
+    const removePhoto = () => {
+        if (window.confirm("Are you sure you want to remove this photo?")) {
+            handleChange({
+                target: { name: 'profilePhoto', value: null }
+            });
+            document.getElementById('profilephoto').value = ""; // Input-ah clear panna
+        }
+    };
     return (
         <form className="content-card" onSubmit={handleSubmit}>
             <div className="profile-header">
@@ -84,7 +109,7 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
                 <button type="button" className="reset-link" onClick={() => { onReset(); setErrors({}); }}>Reset</button>
             </div>
             <div className="profile-layout">
-                <div className="photo-uploader">
+                {/* <div className="photo-uploader">
                     <div className="photo-placeholder">
                         <img className='photo-placeholder-icon' src={addPhoto} alt='upload' />
                         <p>Upload photo</p>
@@ -95,6 +120,61 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
                         <button type="button" className="photo-btn remove"><img className='upload-icon-btn' src={deleteIcon} alt='delete' /> Remove Photo</button>
                         <button type="button" className="photo-btn upload"><img className='upload-icon-btn' src={uploadIcon} alt='upload' /> Upload Photo</button>
                     </div>
+                </div> */}
+                <div className="photo-uploader">
+                    
+                    {/* Dynamic Image Display Box */}
+                    <div className="photo-placeholder">
+                        {data.profilePhoto ? (
+                            <>
+                            <img 
+                                src={URL.createObjectURL(data.profilePhoto)} 
+                                alt="preview" 
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} 
+                            />
+                            {/* <span style={{marginTop:'20px', fontWeight: '600', fontSize: '0.9rem' }}>{data.profilePhoto.name}</span> */}
+                            </>
+                        ) : (
+                            <>
+                            <img className='photo-placeholder-icon' src={addPhoto} alt='upload' />
+                            <p>Upload photo</p>
+                            
+                            {/* <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>JPG, JPEG, and PNG</span> */}
+                            </>
+                            
+                        )}
+                       
+                        
+                           
+                    </div>
+                     {data.profilePhoto ? (<span style={{marginTop:'20px', fontWeight: '600', fontSize: '0.9rem' }}>{data.profilePhoto.name}</span>): 
+                     (<><small>Allowed format: </small>
+                     <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>JPG, JPEG, and PNG</span></>)}
+
+                    {/* Hidden Input Field with Event Listener (onChange) */}
+                    <input 
+                        type="file" 
+                        id="profilephoto" 
+                        style={{ display: 'none' }} 
+                        accept="image/*" 
+                        onChange={handleFileEvent} 
+                    />
+
+                    <div className="photo-actions">
+                    <button type="button" className="photo-btn remove" onClick={removePhoto} disabled={!data.profilePhoto} // Photo illana click aagadhu
+                    style={{ opacity: data.profilePhoto ? 1 : 0.5, cursor: data.profilePhoto ? 'pointer' : 'not-allowed'}}>
+                    <img className='upload-icon-btn' src={deleteIcon} alt='delete'/> Remove Photo</button>
+
+                    <button type="button" className="photo-btn upload" onClick={triggerInput}>
+                    <img className='upload-icon-btn' src={uploadIcon} alt='upload' /> 
+                    {data.profilePhoto ? "Change Photo" : "Upload Photo"}
+                    </button>
+                    </div>
+                </div>
+
+                {/* Form fields (Full Name, Gender, etc.) remains same */}
+                <div className="profile-form">
+                    {/* Unga matha form groups inga varum... */}
                 </div>
                 <div className="profile-form">
                     <div className="form-group">
@@ -269,20 +349,98 @@ const ContactDetails = ({ data, onChange, onReset, onNext }) => {
     );
 };
 
-const ResumeSection = ({ data, onChange, onReset, onNext }) => (
-    <form className="content-card" onSubmit={(e) => { e.preventDefault(); onNext(); }}>
-        <div className="profile-header">
-            <h2>Resume</h2>
-            <button type="button" className="reset-link" onClick={onReset}>Reset</button>
-        </div>
-        <div className="upload-box">
-            <div className="upload-text"><img className='upload-icon-btn' src={uploadIcon} alt='upload' /> Upload Resume</div>
-            <small>Allowed formats: PDF, DOC, DOCX</small>
-        </div>
-        <div className="form-group full-width"><label>Portfolio/Website Link</label><input type="url" name="portfolio" value={data.portfolio || ''} onChange={onChange} placeholder="Enter URL" /></div>
-        <div className="form-actions"><button type="submit" className="btn btn-primary">Save & Continue</button></div>
-    </form>
-);
+const ResumeSection = ({ data, onChange, onReset, onNext }) => {
+    
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+        onChange({
+        target: {
+            name: 'resumeFile',
+            value: file
+            }
+        });
+        }
+    };
+    const handleDeleteFile = (e) => {
+        e.stopPropagation();
+        if (window.confirm("Are you sure you want to remove this resume?")) {
+            onChange({
+                target: {
+                    name: 'resumeFile',
+                    value: null
+                }
+            });
+           
+            document.getElementById('resumeInput').value = "";
+        }
+    };
+    
+    const handleViewResume = (e) => {
+        e.stopPropagation(); 
+        if (data.resumeFile) {
+            const fileURL = URL.createObjectURL(data.resumeFile);
+            window.open(fileURL, '_blank');
+        }
+    };
+
+    return (
+        <form className="content-card" onSubmit={(e) => { e.preventDefault(); onNext(); }}>
+            <div className="profile-header">
+                <h2>Resume</h2>
+                <button type="button" className="reset-link" onClick={onReset}>Reset</button>
+            </div>
+
+            <div className="upload-box">
+                <input 
+                    type="file" 
+                    id="resumeInput"
+                    hidden 
+                    accept=".pdf,.doc,.docx" 
+                    onChange={handleFileChange} 
+                />
+                
+                <div >
+                   {data.resumeFile ? (
+                        
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                            
+                            <span className='ResumeDocs'>{data.resumeFile.name}</span>
+                           
+                            <div className='ActionButtons'>
+                            <button className="ViewResume"type="button" onClick={handleViewResume}>View</button>
+                            <button className="DeleteResume"type="button" onClick={handleDeleteFile}>Remove</button>
+                        </div>
+                        </div>
+                    ) : (
+                        <>
+                        <div  onClick={() => document.getElementById('resumeInput').click()} className="upload-text"><img className='upload-icon-btn' src={uploadIcon} alt='upload' /> Upload Resume</div>
+                        <div>
+                        <small>Allowed formats: PDF, DOC, DOCX</small>
+                        </div>
+                        </>
+                    )}
+                </div>
+                
+            </div>
+
+            <div className="form-group full-width">
+                <label>Portfolio/Website Link</label>
+                <input 
+                    type="url" 
+                    name="portfolio" 
+                    value={data.portfolio || ''} 
+                    onChange={onChange} 
+                    placeholder="Enter URL" 
+                />
+            </div>
+
+            <div className="form-actions">
+                <button type="submit" className="btn btn-primary">Save & Continue</button>
+            </div>
+        </form>
+    );
+};
 
 const EducationDetails = ({ data, onUpdateSSLC, onUpdateHSC, onUpdateGrad, onAddGrad, onRemoveGrad, onReset, onNext }) => {
     const [openSection, setOpenSection] = useState(null);
@@ -749,12 +907,10 @@ const Preferences = ({ data, onChange, onReset,onSubmitFinal }) => {
        
         const newErrors = {};
         if (!data.currentCTC) newErrors.currentCTC = "Required";
-         else if(NumRegix.test(data.currentCTC)) newErrors.currentCTC ="Salary in Numbers" ;
-
+        else if(NumRegix.test(data.currentCTC)) newErrors.currentCTC ="Salary in Numbers" ;
         if (!data.expectedCTC) newErrors.expectedCTC = "Required";
-            else if(NumRegix.test(data.expectedCTC)) newErrors.expectedCTC ="Salary in Numbers" ;
-        if (!data.jobType || data.jobType === 'Select') {
-            newErrors.jobType = "Please select a job type";}
+        else if(NumRegix.test(data.expectedCTC)) newErrors.expectedCTC ="Salary in Numbers" ;
+        if (!data.jobType || data.jobType === 'Select') {newErrors.jobType = "Please select a job type";}   
         if (!data.role) newErrors.role = "Required";
         if (!data.ready) newErrors.ready = "Please select your availability";
         if (!data.relocate) newErrors.relocate = "Please select relocation preference";
@@ -763,8 +919,6 @@ const Preferences = ({ data, onChange, onReset,onSubmitFinal }) => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length === 0) {
          onSubmitFinal()
-        } else {
-            
         }
     };
     
@@ -839,7 +993,7 @@ export const MyProfile = () => {
         profile: { fullName: '', gender: 'Select', dob: '', maritalStatus: 'Select', nationality: '' },
         currentDetails: { jobTitle: '', company: '', experience: '', currentLocation: '', prefLocation: '' },
         contact: { mobile: '', altMobile: '', email: '', altEmail: '', address: '', street: '', city: '', state: '', pincode: '', country: '' },
-        resume: { portfolio: '' },
+        resume:{size:'',  portfolio: '' },
         education: { highestQual: 'Select', sslc: { institution: '', percentage: '', location: '', year: '' }, hsc: { stream: 'Select', institution: '', location: '', year: '', percentage: '' }, graduations: [{ id: 1, degree: '', status: 'Select', dept: '', percentage: '', startYear: '', endYear: '', college: '', city: '', state: '', country: '' }] },
         experience: { status: 'Fresher', hasExperience: 'No', entries: [{ id: 1, title: '', company: '', startDate: '', endDate: '', industry: 'Select', jobType: 'Select', location: '', responsibilities: '' }] },
         skills: ["User Research", "Problem solving", "Figma"],
@@ -1057,7 +1211,7 @@ export const MyProfile = () => {
             case 'Profile': return <Profile data={allData.profile} onChange={(e) => handleUpdate('profile', e)} onReset={() => handleReset('profile')} onNext={handleNextStep} />;
             case 'Current Details': return <CurrentDetails data={allData.currentDetails} onChange={(e) => handleUpdate('currentDetails', e)} onReset={() => handleReset('currentDetails')} onNext={handleNextStep} />;
             case 'Contact Details': return <ContactDetails data={allData.contact} onChange={(e) => handleUpdate('contact', e)} onReset={() => handleReset('contact')} onNext={handleNextStep} />;
-            case 'Resume': return <ResumeSection data={allData.resume} onChange={(e) => handleUpdate('resume', e)} onReset={() => handleReset('resume')} onNext={handleNextStep} />;
+            case 'Resume': return <ResumeSection data={allData.resume} size={allData.size} onChange={(e) => handleUpdate('resume', e)} onReset={() => handleReset('resume')} onNext={handleNextStep} />;
             case 'Education Details': return <EducationDetails data={allData.education} onUpdateSSLC={handleUpdateSSLC} onUpdateHSC={handleUpdateHSC} onUpdateGrad={handleUpdateGrad} onAddGrad={handleAddGrad} onRemoveGrad={handleRemoveGrad} onReset={() => handleReset('education')} onNext={handleNextStep} />;
             case 'Work Experience': return <WorkExperience data={allData.experience} onChange={(e) => handleUpdate('experience', e)} onUpdateEntry={handleExpUpdateEntry} onAddEntry={handleAddExpEntry} onRemoveEntry={handleRemoveExpEntry} onReset={() => handleReset('experience')} onNext={handleNextStep} />;
             case 'Key Skills': return <KeySkills skills={allData.skills} onAdd={(item) => handleArrayAdd('skills', item)} onUpdate={(idx, item) => handleArrayUpdate('skills', idx, item)} onDelete={(idx) => handleArrayDelete('skills', idx)} onReset={() => handleReset('skills')} onNext={handleNextStep} />;
