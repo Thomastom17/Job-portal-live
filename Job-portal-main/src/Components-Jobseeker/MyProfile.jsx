@@ -512,94 +512,74 @@ const Certifications = ({ certs, onAdd, onUpdate, onDelete, onReset, onNext }) =
     const [currentCert, setCurrentCert] = useState({ name: "", file: null });
     const [errors, setErrors] = useState({});
     const [showMenu, setShowMenu] = useState(false);
- 
+    const [previewUrl, setPreviewUrl] = useState(null);
+    const [previewType, setPreviewType] = useState(null);
  
     const openAdd = () => {
         setEditIndex(null);
         setCurrentCert({ name: "", file: null });
         setIsModalOpen(true);
     };
- 
     const openEdit = (index) => {
         setEditIndex(index);
         setCurrentCert(certs[index]);
         setIsModalOpen(true);
     };
- 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             setCurrentCert({ ...currentCert, file });
         }
     };
- 
- 
     const handleSave = () => {
         if (!currentCert.name.trim()) return;
- 
         if (editIndex !== null) {
             onUpdate(editIndex, currentCert);
         } else {
             onAdd(currentCert);
         }
- 
         setIsModalOpen(false);
     };
- 
     const handleDelete = () => {
         if (editIndex !== null) {
             onDelete(editIndex);
             setIsModalOpen(false);
         }
     };
- 
     const handleSubmit = (e) => {
         e.preventDefault();
         const newErrors = {};
- 
         if (certs.length === 0) {
             newErrors.certs = "Add atleast one certificate";
         }
- 
         setErrors(newErrors);
- 
         if (Object.keys(newErrors).length === 0) {
             onNext();
         }
     };
- 
+    const handlePreview = () => {
+    if (!currentCert.file) return;
+    const file = currentCert.file;
+    const url = URL.createObjectURL(file);
+    if (file.type === "application/pdf") {
+        window.open(url, "_blank");
+    } else if (file.type.startsWith("image/")) {
+        setPreviewUrl(url);
+        setPreviewType("image");
+    }
+};
     return (
         <form className="content-card" onSubmit={handleSubmit}>
             <div className="profile-header">
                 <h2>Certifications</h2>
-                <button
-                    type="button"
-                    className="reset-link"
-                    onClick={onReset}
-                >
-                    Reset
-                </button>
+                <button type="button" className="reset-link" onClick={onReset}>Reset</button>
             </div>
- 
             <div className="skills-list">
-                {certs.map((cert, index) => (
-                    <EditableListItem
-                        key={index}
-                        title={cert.name}
-                        onEdit={() => openEdit(index)}
-                    />
-                ))}
+                {certs.map((cert, index) => (<EditableListItem key={index} title={cert.name} onEdit={() => openEdit(index)}/>))}
             </div>
  
-            {errors.certs && (
-                <span className="error-message">{errors.certs}</span>
-            )}
- 
-            <button
-                type="button"
-                className="add-link"
-                onClick={openAdd}
-            >
+            {errors.certs && (<span className="error-message">{errors.certs}</span>)}
+            <button type="button" className="add-link" onClick={openAdd}>
                 + Add another certification
             </button>
  
@@ -611,24 +591,14 @@ const Certifications = ({ certs, onAdd, onUpdate, onDelete, onReset, onNext }) =
  
             <PopupModal
                 title={editIndex !== null ? "Edit Certification" : "Add Certification"}
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSave={handleSave}
-                onDelete={handleDelete}
-                mode={editIndex !== null ? "edit" : "add"}
+                isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} onDelete={handleDelete} mode={editIndex !== null ? "edit" : "add"}
             >
- 
                 <div className="form-group">
                     <label>Certification Name *</label>
                     <input
                         type="text"
                         value={currentCert.name}
-                        onChange={(e) =>
-                            setCurrentCert({
-                                ...currentCert,
-                                name: e.target.value,
-                            })
-                        }
+                        onChange={(e) =>setCurrentCert({...currentCert,name: e.target.value,})}
                         placeholder="e.g., Full-stack development"
                     />
                 </div>
@@ -639,32 +609,26 @@ const Certifications = ({ certs, onAdd, onUpdate, onDelete, onReset, onNext }) =
                 className="file-input"
                 accept=".pdf,.png,.jpg,.jpeg"
                 onChange={handleFileChange}/>
-                <div className="choose-file-container"onClick={() => document.getElementById("certUpload").click()}>
-                    Choose File
-                </div>
+                <div className="choose-file-container"onClick={() => document.getElementById("certUpload").click()}>Choose File</div>
                 {currentCert.file && (<div className="uploaded-file-container">
-                    <span className="uploaded-file-name">
-                {currentCert.file.name} </span>
-                <div className="cert-menu-wrapper"onClick={(e) => e.stopPropagation()}>
-                    <span className="cert-upload-icon" onClick={() => setShowMenu(!showMenu)} > ⋮ </span>
- 
-                {showMenu && (
-                    <div className="cert-menu">
-                        <button
-                            type="button"
-                            className="cert-menu-item"
-                            onClick={() => {
-                                setCurrentCert({ ...currentCert, file: null });
-                                setShowMenu(false);
-                            }}>Delete
-                        </button>
-                    </div>
+                    <span className="uploaded-file-name" onClick={handlePreview}>{currentCert.file.name}</span>
+                     <span className="cert-upload-icon" onClick={() => setShowMenu(!showMenu)}> ⋮ </span>
+                     {showMenu && (
+                        <div className="cert-menu">
+                            <button type="button" className="cert-menu-item"onClick={() => {setCurrentCert({ ...currentCert, file: null });setShowMenu(false);
+                    }}>
+                    Delete
+                </button>
+                 </div>
                 )}
-            </div>
-        </div>
-    )}
-        </div>
-               
+                </div>
+            )}
+            {previewType === "image" && (<div className="preview-overlay" onClick={() => setPreviewType(null)}>
+                 <div className="preview-box"><img src={previewUrl} alt="Preview" />
+                 </div>
+                 </div>
+                )}
+                 </div>
             </PopupModal>
         </form>
     );
