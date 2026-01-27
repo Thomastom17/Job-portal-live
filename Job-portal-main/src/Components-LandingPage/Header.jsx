@@ -27,7 +27,7 @@ export const Header = () => {
   ];
  
   const navIcons = [
-    { image: breifcase, path: '/Job-portal-live/jobseeker/myjobs' },
+    { image: breifcase, path: '/Job-portal/jobseeker/myjobs' },
     { image: chat, path: '' },
   ];
  
@@ -142,3 +142,4 @@ export const Header = () => {
     </header>
   );
 };
+ 

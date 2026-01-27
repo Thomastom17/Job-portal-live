@@ -20,6 +20,9 @@ import { JobsThroughCompany } from './Components-Jobseeker/JobsThroughCompany'
 // import Newjobfreshness from './Components-Jobseeker/Newjobfreshness'
 import { AboutUs } from './Components-LandingPage/AboutUs'
 import SearchResultsPage from './Components-Jobseeker/SearchResultsPage'
+import { Revoked } from './Components-Jobseeker/Revoked'
+import { JobProvider } from './Components-Jobseeker/Jobcontext'
+import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
 
 
 const router = createBrowserRouter([
@@ -101,6 +104,15 @@ const router = createBrowserRouter([
   path: '/Job-portal-live/aboutus',
   element: <AboutUs />,
 },
+{
+  path: '/Job-portal-live/revoked',
+  element: <Revoked />
+},
+{
+  path: './Job-portal-live/appliedjobsoverview/:id',
+  element: <AppliedJobsOverview />, 
+
+}
 
 
 ])
@@ -108,7 +120,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
+
+      <JobProvider>
       <RouterProvider router={router} />
+      </JobProvider>
     </>
   )
 }
