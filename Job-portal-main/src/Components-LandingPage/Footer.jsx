@@ -21,7 +21,7 @@ export const Footer = () => {
           <h3>Quick Links</h3>
           <ul>
             <Link to={'/Job-portal-live/aboutus'}><li>About Us</li></Link>
-            <li>Contact Us</li>
+            <Link to={'/Job-portal-live/contactus'}><li>Contact Us</li></Link>
             <li>FAQs</li>
             <li>Blog</li>
           </ul>

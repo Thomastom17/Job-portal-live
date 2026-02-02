@@ -23,6 +23,7 @@ import SearchResultsPage from './Components-Jobseeker/SearchResultsPage'
 import { Revoked } from './Components-Jobseeker/Revoked'
 import { JobProvider } from './Components-Jobseeker/Jobcontext'
 import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
+import { ContactUs } from './Components-LandingPage/ContactUs'
 
 
 const router = createBrowserRouter([
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
   path: './Job-portal-live/appliedjobsoverview/:id',
   element: <AppliedJobsOverview />, 
 
+},
+{
+ path: '/Job-portal-live/contactus',
+  element: <ContactUs />,
 }
 
 
@@ -129,3 +134,4 @@ function App() {
 }
 
 export default App
+  
