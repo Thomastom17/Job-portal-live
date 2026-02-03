@@ -20,9 +20,9 @@ export const Footer = () => {
         <div className="footer-link-section">
           <h3>Quick Links</h3>
           <ul>
-            <Link to={'/Job-portal-live/aboutus'}><li>About Us</li></Link>
-            <Link to={'/Job-portal-live/contactus'}><li>Contact Us</li></Link>
-            <li>FAQs</li>
+            <Link to={'/Job-portal-live/jobseeker/aboutus'}><li>About Us</li></Link>
+            <Link to={'/Job-portal-live/jobseeker/contactus'}><li>Contact Us</li></Link>
+            <Link to={'/Job-portal-live/jobseeker/faqs'}><li>FAQs</li></Link>
             <li>Blog</li>
           </ul>
         </div>

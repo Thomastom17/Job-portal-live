@@ -24,6 +24,7 @@ import { Revoked } from './Components-Jobseeker/Revoked'
 import { JobProvider } from './Components-Jobseeker/Jobcontext'
 import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
 import { ContactUs } from './Components-LandingPage/ContactUs'
+import  FAQs  from './Components-LandingPage/FAQs'
 
 
 const router = createBrowserRouter([
@@ -102,7 +103,7 @@ const router = createBrowserRouter([
  element: <SearchResultsPage/>
 },
 { 
-  path: '/Job-portal-live/aboutus',
+  path: '/Job-portal-live/jobseeker/aboutus',
   element: <AboutUs />,
 },
 {
@@ -115,9 +116,14 @@ const router = createBrowserRouter([
 
 },
 {
- path: '/Job-portal-live/contactus',
+ path: '/Job-portal-live/jobseeker/contactus',
   element: <ContactUs />,
+},
+{
+ path: '/Job-portal-live/jobseeker/faqs',
+  element: <FAQs />,
 }
+
 
 
 ])

@@ -1,30 +1,27 @@
 import React from 'react'
+import { Header } from '../Components-LandingPage/Header'
+import { Footer } from '../Components-LandingPage/Footer'
+import ContactImage from '../assets/Contactus.png'
 import './ContactUs.css'
-import { Header } from './Header'
-import { Footer } from './Footer'
-import ContactImage from '../assets/ContactUs.png'
-
-
- 
 export const ContactUs = () => {
   return (
     <div className="contact-page">
       <Header />
  
       <div className="contact-container">
-        {/* LEFT IMAGE */}  
+       
         <div className="contact-left">
           <img src={ContactImage} alt="Contact Us" />
         </div>
  
-        {/* RIGHT FORM */}
-        <div className="contact-right">
+        <div className="contact-right" >
+           
           <h2>Contact Us</h2>
           <p className="contact-subtitle">Send us messages</p>
           <p className="contact-desc">
             Do you have a question? or need any help
           </p>
- 
+         
           <form className="contact-form">
             <div className="form-group">
               <label>Name</label>
@@ -45,22 +42,23 @@ export const ContactUs = () => {
               <label>Message</label>
               <textarea placeholder="Type something..." />
             </div>
- 
-            
+           
           </form>
-          
+         
         </div>
        
-        
       </div>
-
-       <button type="submit" className="submit-btn">
+      <div style={{display:"flex", justifyContent:"center"}}>
+        <button style={{display:"flex", justifyContent:"center",textAlign:"center", width:"100px",padding:"15px"}} type="submit" className="submit-btn">
               Submit
             </button>
+            </div>
+     
  
       <Footer />
     </div>
   )
 }
-
+ 
+// export default ContactUs
  
