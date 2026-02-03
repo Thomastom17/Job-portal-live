@@ -26,6 +26,7 @@ import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
 import { ContactUs } from './Components-LandingPage/ContactUs'
 import  FAQs  from './Components-LandingPage/FAQs'
 import  Settings  from './Components-Jobseeker/Settings'
+import { TechnologyBlog } from './Components-LandingPage/TechnologyBlog'
 
 
 const router = createBrowserRouter([
@@ -126,10 +127,12 @@ const router = createBrowserRouter([
 },
 {
   path: '/Job-portal-live/jobseeker/settings',
-     element: <Settings />,
+    element: <Settings />,
   },
-
-
+{
+  path: '/Job-portal-live/jobseeker/technologyblog',
+    element: <TechnologyBlog />, 
+  }
 
 
 ])
