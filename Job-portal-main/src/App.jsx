@@ -25,10 +25,11 @@ import { JobProvider } from './Components-Jobseeker/Jobcontext'
 import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
 import { ContactUs } from './Components-LandingPage/ContactUs'
 import  FAQs  from './Components-LandingPage/FAQs'
+import  Settings  from './Components-Jobseeker/Settings'
 
 
 const router = createBrowserRouter([
-  {
+ {
   path: '/Job-portal-live',
   element: <Landingpage />,
 },
@@ -122,7 +123,12 @@ const router = createBrowserRouter([
 {
  path: '/Job-portal-live/jobseeker/faqs',
   element: <FAQs />,
-}
+},
+{
+  path: '/Job-portal-live/jobseeker/settings',
+     element: <Settings />,
+  },
+
 
 
 
