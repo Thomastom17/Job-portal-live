@@ -17,7 +17,6 @@ import { JobsTab } from './Components-Jobseeker/JobsTab'
 import { CompaniesTab} from './Components-Jobseeker/CompaniesTab'
 import { MyProfile } from './Components-Jobseeker/MyProfile'
 import { JobsThroughCompany } from './Components-Jobseeker/JobsThroughCompany'
-// import Newjobfreshness from './Components-Jobseeker/Newjobfreshness'
 import { AboutUs } from './Components-LandingPage/AboutUs'
 import SearchResultsPage from './Components-Jobseeker/SearchResultsPage'
 import { Revoked } from './Components-Jobseeker/Revoked'
@@ -25,6 +24,7 @@ import { JobProvider } from './Components-Jobseeker/Jobcontext'
 import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
 import { ContactUs } from './Components-LandingPage/ContactUs'
 import  FAQs  from './Components-LandingPage/FAQs'
+import  { BlogPage } from './Components-LandingPage/BlogPage'
 import  Settings  from './Components-Jobseeker/Settings'
 import { TechnologyBlog } from './Components-LandingPage/TechnologyBlog'
 
@@ -95,11 +95,6 @@ const router = createBrowserRouter([
   element: <JobsThroughCompany />,
 },
 
-// {
-//   path: '/Job-portal-live/jobseeker/newjobfreshness',
-//   element: <Newjobfreshness />,
-// },
-
 {
   path: '/Job-portal-live/jobseeker/searchresults',
  element: <SearchResultsPage/>
@@ -125,6 +120,11 @@ const router = createBrowserRouter([
  path: '/Job-portal-live/jobseeker/faqs',
   element: <FAQs />,
 },
+{
+  path: '/Job-portal-live/jobseeker/blogpage',
+    element: <BlogPage />,
+},
+
 {
   path: '/Job-portal-live/jobseeker/settings',
     element: <Settings />,
