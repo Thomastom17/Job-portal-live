@@ -1,13 +1,8 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .blogpage{
   text-align: center;
   font-size: 28px;
   font-weight: bold;
-  margin: 30px 0;
+  margin: 50px 0;
 }
 .cat-con{
   display: flex;
@@ -16,30 +11,47 @@
   /* border:1px solid #333; */
   padding: 20px;
 }
-
+ 
 .content{
-  max-height: 400px;
+  max-height: fit-content;
 }
-
+.extra-content {
+  display: none;
+}
+.content button{
+  background: none;
+  outline: none;
+  border: none;
+  color: #111111;
+  font-weight: 800;
+  font-size: larger;
+  font-family: "Inter";
+}
+.content button:focus ~ .extra-content {
+  display: block;
+}
+ 
 .container{
-  /* width: 90%; */
-  /* margin: auto; */
   display: grid;
-  justify-content: center;
   align-items: center;
+  justify-items: center;
+  justify-content: center;
   grid-template-columns: repeat(3,1fr);
-  gap: 30px;
-
+  gap: 10px;
+  /* margin-left: 70px; */
+  /* margin-top: 50px; */
+  padding: 20px;
+ 
 }
-
+ 
 .container > div{
-  background: #ffff;
+  background: #fff;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   padding: 15px;
-  transition: transform 0.3s ease;
+  width:80% ;
+ 
 }
-
+ 
 .container > div:hover{
   transform: translateY(-8px);
 }
@@ -49,33 +61,35 @@
   object-fit: cover;
   border-radius: 12px;
 }
-
+ 
 .container h3{
   margin: 15px 0 10px;
   font-size: 18px;
   color: #333;
-
+ 
 }
 .container p{
   font-size: 14px;
   color: #666;
   line-height: 1.6;
 }
-
+ 
 .categories {
-  /* padding: 25px; */
+ 
+  margin: 0 70px;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-bottom: 30px;
+  /* background-color: #111111; */
 }
-
+ 
 .categories h1 {
   font-size: 32px;
   font-weight: 700;
   /* text-transform: lowercase; */
 }
-
+ 
 .view-all {
   background: transparent;
   background-color: blue;
@@ -86,7 +100,7 @@
   cursor: pointer;
   border-radius: 6px;
 }
-
+ 
 .card-title{
   text-align: center;
   font-size: 40px;

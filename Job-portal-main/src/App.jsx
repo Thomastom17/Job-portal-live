@@ -24,9 +24,9 @@ import { JobProvider } from './Components-Jobseeker/Jobcontext'
 import  AppliedJobsOverview  from './Components-Jobseeker/AppliedJobsOverview'
 import { ContactUs } from './Components-LandingPage/ContactUs'
 import  FAQs  from './Components-LandingPage/FAQs'
-import  { BlogPage } from './Components-LandingPage/BlogPage'
 import  Settings  from './Components-Jobseeker/Settings'
 import { TechnologyBlog } from './Components-LandingPage/TechnologyBlog'
+import BlogPage from './Components-LandingPage/BlogPage'
 
 
 const router = createBrowserRouter([
@@ -120,10 +120,6 @@ const router = createBrowserRouter([
  path: '/Job-portal-live/jobseeker/faqs',
   element: <FAQs />,
 },
-{
-  path: '/Job-portal-live/jobseeker/blogpage',
-    element: <BlogPage />,
-},
 
 {
   path: '/Job-portal-live/jobseeker/settings',
@@ -133,6 +129,11 @@ const router = createBrowserRouter([
   path: '/Job-portal-live/jobseeker/technologyblog',
     element: <TechnologyBlog />, 
   }
+,
+{
+  path: '/Job-portal-live/jobseeker/blogpage',
+    element: <BlogPage />, 
+}
 
 
 ])

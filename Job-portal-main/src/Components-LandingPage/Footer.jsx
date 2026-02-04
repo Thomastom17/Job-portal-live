@@ -23,7 +23,7 @@ export const Footer = () => {
             <Link to={'/Job-portal-live/jobseeker/aboutus'}><li>About Us</li></Link>
             <Link to={'/Job-portal-live/jobseeker/contactus'}><li>Contact Us</li></Link>
             <Link to={'/Job-portal-live/jobseeker/faqs'}><li>FAQs</li></Link>
-            <li>Blog</li>
+            <Link to={'/Job-portal-live/jobseeker/blogpage'}><li>Blog</li></Link>
           </ul>
         </div>
 
