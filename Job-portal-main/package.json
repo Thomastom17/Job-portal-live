@@ -1,7 +1,7 @@
 {
   "name": "job-portal-project",
   "homepage": "https://Thomastom17.github.io/Job-portal-Live",
-  "private": "false",
+  "private": "true",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

@@ -34,7 +34,12 @@ import { TechnologyBlog } from './Components-Jobseeker/TechnologyBlog'
 
 
 const router = createBrowserRouter([
-  {
+
+{
+    path: '/',
+    element: <Landingpage />,
+},
+{
   path: '/Job-portal-Live',
   element: <Landingpage />,
 },
