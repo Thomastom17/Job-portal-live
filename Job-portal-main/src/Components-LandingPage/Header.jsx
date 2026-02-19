@@ -6,36 +6,40 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import breifcase from '../assets/header_case.png';
 import chat from '../assets/header_message.png';
 import bell from '../assets/header_bell.png';
-import home_icon from '../assets/header_bell.png';
-import bell_dot from '../assets/header_bell_dot.png';
+import home_icon from '../assets/home_icon.png';
+import belldot from '../assets/header_bell_dot.png'
 import { AvatarMenu } from '../Components-Jobseeker/AvatarMenu';
 import { JNotification } from '../Components-Jobseeker/JNotification';
-import { notificationsData } from '../Components-Jobseeker/Afterloginlanding';
+import { useJobs } from '../JobContext';
+
 
 export const Header = () => {
   const location = useLocation();
-  const [showNotification, setShowNotification] = useState(false);
+  const {notificationsData, showNotification, setShowNotification}= useJobs();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
  
   const isLoggedIn =
-    location.pathname.includes('/jobseeker') &&
+    location.pathname.includes('/jobseeker')&&
     !location.pathname.includes('/login') &&
-    !location.pathname.includes('/signup');
+    !location.pathname.includes('/signup')
  
   const navLinks = [
-    { name: 'Home', path: '/Job-portal-Live/jobseeker' },
-    { name: 'Jobs', path: '/Job-portal-Live/jobseeker/jobs' },
-    { name: 'Companies', path: '/Job-portal-Live/jobseeker/companies' },
+    { name: 'Home', path: '/Job-portal/jobseeker' },
+    { name: 'Jobs', path: '/Job-portal/jobseeker/jobs' },
+    { name: 'Companies', path: '/Job-portal/jobseeker/companies' },
   ];
  
   const navIcons = [
-    { image: breifcase, path: '/Job-portal-Live/jobseeker/myjobs' },
-    { image: chat, path: '' },
+    { image: breifcase, path: '/Job-portal/jobseeker/myjobs' },
+    { image: chat, path: '/Job-portal/jobseeker/Chat' },
   ];
- 
   const newNotificationsCount = notificationsData
-    ? notificationsData.filter(n => n.isNew).length
+    ? notificationsData.filter(n => !n.isRead).length
     : 0;
+
+  console.log(newNotificationsCount)
+  console.log("Image to show:", newNotificationsCount > 0 ? "DOT ICON" : "NORMAL BELL");
+  //  const newNotificationsCount = notificationsData.filter(n => !n.isRead).length;
  
   const preventNav = (e) => {
     e.preventDefault();
@@ -77,12 +81,12 @@ export const Header = () => {
       <div className="auth-links">
         {isLoggedIn ? (
           <>
-            <Link to="/Job-portal-Live/jobseeker" className="mobile-home-icon">
+            <Link to="/Job-portal/jobseeker" className="mobile-home-icon">
               <img
                 src={home_icon}
                 alt="Home"
                 className={
-                  location.pathname === '/Job-portal-Live/jobseeker'
+                  location.pathname === '/Job-portal/jobseeker'
                     ? 'jheader-icons-active'
                     : 'jheader-icons'
                 }
@@ -104,7 +108,7 @@ export const Header = () => {
  
             <div onClick={() => setShowNotification(!showNotification)}>
               <img
-                src={newNotificationsCount > 0 ? bell_dot : bell}
+                src={newNotificationsCount > 0 ?  belldot : bell }
                 alt="Notifications"
                 className="jheader-icons"
               />
@@ -120,10 +124,10 @@ export const Header = () => {
           </>
         ) : (
           <>
-            <Link to="/Job-portal-Live/jobseeker/login" className="login-btn">Login</Link>
-            <Link to="/Job-portal-Live/jobseeker/signup" className="signup-btn">Sign up</Link>
+            <Link to="/Job-portal/jobseeker/login" className="login-btn">Login</Link>
+            <Link to="/Job-portal/jobseeker/signup" className="signup-btn">Sign up</Link>
             <div className="separator"></div>
-            <Link to="/Job-portal-Live/employer/login" className="emp-log-link">For Employers</Link>
+            <Link to="/Job-portal/employer/login" className="emp-log-link">For Employers</Link>
           </>
         )}
       </div>
@@ -134,9 +138,9 @@ export const Header = () => {
             <a href="#" onClick={preventNav}>Jobs</a>
             <a href="#" onClick={preventNav}>Companies</a>
  
-            <Link to="/Job-portal-Live/jobseeker/login" onClick={() => setMobileMenuOpen(false)}>Login</Link>
-            <Link to="/Job-portal-Live/jobseeker/signup" onClick={() => setMobileMenuOpen(false)}>Sign up</Link>
-            <Link to="/Job-portal-Live/employer/login" onClick={() => setMobileMenuOpen(false)}>For Employers</Link>
+            <Link to="/Job-portal/jobseeker/login" onClick={() => setMobileMenuOpen(false)}>Login</Link>
+            <Link to="/Job-portal/jobseeker/signup" onClick={() => setMobileMenuOpen(false)}>Sign up</Link>
+            <Link to="/Job-portal/employer/login" onClick={() => setMobileMenuOpen(false)}>For Employers</Link>
           </div>
         </div>
       )}

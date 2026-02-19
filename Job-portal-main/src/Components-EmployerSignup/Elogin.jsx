@@ -8,7 +8,7 @@ import './Elogin.css'
 
 export const Elogin = () => {
   const [passwordShow, setPasswordShow] = useState(true)
-
+  const navigate = useNavigate();
   const togglePasswordView = () => {
     setPasswordShow((prev) => !prev)
   }
@@ -17,9 +17,6 @@ export const Elogin = () => {
   const [formValues, setFormValues] = useState(initialValues)
 
   const [errors, setErrors] = useState({})
-  //  const oneUpperCase = /^(?=.*[A-Z]).{8,}$/;
-  //   const oneNumber = /^(?=.*[0-9]).{8,}$/;
-  //   const oneSpecChar = /^(?=.*[!@#$%^&*]).{8,}$/;
 
   const handleForm = (e) => {
     const { name, value } = e.target
@@ -35,18 +32,8 @@ export const Elogin = () => {
     }
 
     if (!formValues.password.trim()) {
-      newErrors.password = "Password is required"} 
-    // else if (formValues.password.length < 8) {
-    //   newErrors.password = "Password must be at least 8 characters"}
-    // else if (!formValues.password.trim()) {
-    //   newErrors.password = "Password is required"}
-    // else if (!oneUpperCase.test(formValues.password)) {
-    //   newErrors.password = "Password must include at least one uppercase letter"} 
-    // else if (!oneNumber.test(formValues.password)) {
-    //   newErrors.password = "Password must include at least one number"}
-    // else if (!oneSpecChar.test(formValues.password)) {
-    //   newErrors.password = "Password must include at least one special Charectors"
-    // }
+      newErrors.password = "Password is required"
+    }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -56,7 +43,7 @@ export const Elogin = () => {
     if (!validateForm()) {
       return false // stops form submit if errors
     }
-    console.log("Logged in successfully") // This Code is removed after backend integration 
+     navigate('/Job-portal/Employer/Dashboard')
   }
 
   return (
@@ -68,9 +55,9 @@ export const Elogin = () => {
         </Link>
         <div className="header-links">
           <span className='no-account'>Don’t have an account?</span>
-          <Link to="/Job-portal-Live/employer/signup" className="signup-btn">Create</Link>
+          <Link to="/Job-portal/employer/signup" className="signup-btn">Create</Link>
           <div className="separator"></div>
-          <Link to="/Job-portal-Live/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
+          <Link to="/Job-portal/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
         </div>
       </header>
 
