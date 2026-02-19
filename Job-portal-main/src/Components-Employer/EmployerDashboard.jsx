@@ -15,8 +15,6 @@ import ActiveJobs from '../assets/Employer/EActiveJobs.png'
 import TotalAPP from '../assets/Employer/ETotalAPP.png'
 import Close from '../assets/Employer/close.png'
 import jobpost from '../assets/Employer/JOBPOST.png'
-import { Header } from '../Components-LandingPage/Header'
-import { JHeader } from '../Components-Jobseeker/JHeader'
 
 export const EmployerDashboard = () => {
 
@@ -35,7 +33,7 @@ export const EmployerDashboard = () => {
         <div className='EAside'>
         <div>
             <div style={{display:"flex",justifyContent:"space-between" ,textAlign:"center", alignItems:"center", marginTop:"35px", marginBottom:"35px"}}>
-                <h3 style={{color:"snow",margin:"25px",fontWeight:"900"}} >Yamuna</h3>
+                <h3 style={{color:"snow",margin:"25px",fontWeight:"900"}} >Stackly</h3>
                 <img src={Close} width={10} itemType='icon' style={{backgroundColor:"white",padding:'5px',color:"snow",margin:"25px", borderRadius:"30px"}} onClick={()=>ToggleSidebar()} /> 
             </div>
             <h3 className='Aside-Title'>Overview</h3>
@@ -79,7 +77,7 @@ export const EmployerDashboard = () => {
         <div className='EAside2'>
         <div>
            <div style={{display:"flex",flexDirection:"column-reverse" ,justifyContent:"space-between", alignItems:"center",textAlign:"center", marginTop:"15px", padding:"5px"}}>
-                <div className='EE-Name'><h3 style={{margin:"15px", fontSize:"22px"}} >Y</h3></div>
+                <div className='EE-Name'><h3 style={{margin:"15px", fontSize:"22px"}} >S</h3></div>
                  <img src={jobpost} width={30} itemType='icon' style={{padding:'5px',color:"snow",}} onClick={()=>ToggleSidebar()} /> 
             </div>
             {/* <h3 className='Aside-Title'>Overview</h3> */}
@@ -140,7 +138,7 @@ export const EmployerDashboard = () => {
         <>
         <div className='Welcome-Note'>
             <div>
-            <h2>Hi Yamuna,</h2>
+            <h2>Hi Stackly</h2>
             <p style={{fontWeight:"600"}}>Here's, What's Going on... </p>
             </div>
             <button className='post-job-btn'>+ Post a Job</button>

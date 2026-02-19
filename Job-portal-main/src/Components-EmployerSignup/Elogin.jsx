@@ -9,6 +9,9 @@ import './Elogin.css'
 export const Elogin = () => {
   const [passwordShow, setPasswordShow] = useState(true)
   const navigate = useNavigate();
+  const userName= "Employer";
+  const pwd = "Emp@123"
+
   const togglePasswordView = () => {
     setPasswordShow((prev) => !prev)
   }
@@ -17,34 +20,34 @@ export const Elogin = () => {
   const [formValues, setFormValues] = useState(initialValues)
 
   const [errors, setErrors] = useState({})
+  
 
-  const handleForm = (e) => {
+    const handleForm = (e) => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
     setErrors({ ...errors, [name]: "" })
   }
-
-  const validateForm = () => {
-    const newErrors = {}
+  function handleSubmit(formData) {
+  const newErrors = {}
 
     if (!formValues.username.trim()) {
       newErrors.username = "Username or Company name is required"
+    }else if (formValues.username !== userName){
+      newErrors.username = "Incorrect Username"
     }
 
-    if (!formValues.password.trim()) {
+     if (!formValues.password.trim()) {
       newErrors.password = "Password is required"
+    }else if (formValues.password !== pwd){
+      newErrors.password = "Incorrect Password"
     }
 
-    setErrors(newErrors)
+  if(formValues.username === userName && formValues.password===pwd) {
+    navigate('/Job-portal-Live/Employer/Dashboard')
+  }
+ setErrors(newErrors)
     return Object.keys(newErrors).length === 0
-  }
-
-  function handleSubmit(formData) {
-    if (!validateForm()) {
-      return false // stops form submit if errors
-    }
-     navigate('/Job-portal/Employer/Dashboard')
-  }
+}
 
   return (
     <div className="login-page">
@@ -55,9 +58,9 @@ export const Elogin = () => {
         </Link>
         <div className="header-links">
           <span className='no-account'>Don’t have an account?</span>
-          <Link to="/Job-portal/employer/signup" className="signup-btn">Create</Link>
+          <Link to="/Job-portal-Live/employer/signup" className="signup-btn">Create</Link>
           <div className="separator"></div>
-          <Link to="/Job-portal/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
+          <Link to="/Job-portal-Live/jobseeker/login" className="employer-redirect-link">Job seekers Login</Link>
         </div>
       </header>
 

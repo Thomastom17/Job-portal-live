@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Chatbox.css";
 import { Header } from "../Components-LandingPage/Header";
-import { useJobs } from "../JobContext";
-
+import { useJobs } from "./Jobcontext";
 
 export const Chatbox = () => {
-  const { chats, setChats,isChatEnded, setIsChatEnded,addNotification } = useJobs();
+  const { chats, setChats } = useJobs();
   const [input, setInput] = useState("");
-  
-   
   const scrollRef = useRef(null);
 
+  
   const jobseekerChat = chats.find(c => c.role === "jobseeker");
+  
   const employerData = chats.find(c => c.role === "employer");
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export const Chatbox = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    if (!input.trim() || isChatEnded) return; 
+    if (!input.trim()) return;
 
     const employerReply = {
       id: Date.now(),
@@ -29,14 +28,9 @@ export const Chatbox = () => {
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
-    // Chat updates
     setChats(prev => prev.map(chat => 
       chat.role === "employer" ? { ...chat, messages: [...chat.messages, employerReply] } : chat
     ));
-
-    // 2. Sending datas Notification
-    addNotification(`New message from Employer: ${input}`);
-
     setInput("");
   };
 
@@ -53,49 +47,22 @@ export const Chatbox = () => {
                 </div>
             </div>
             <div className="web-main-chat">
-                <header className="web-chat-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <header className="web-chat-header">
                     <strong>{jobseekerChat.name}</strong>
-                    
-                    {/* End / Restart Button Logic */}
-                    <button 
-                      onClick={() => setIsChatEnded(!isChatEnded)}
-                      className={ isChatEnded ? "E-Start-Convo-Button" : "E-End-Convo-Button"}
-                    >
-                      {isChatEnded ? "RESTART CONVERSATION" : "END CONVERSATION"}
-                    </button>
                 </header>
-
                 <div className="web-chat-window" ref={scrollRef}>
                   {employerData.messages.map((m) => (
                     <div key={m.id} className="web-msg-row">
+                      {/* Employer logic: friend is 'me' (Right), me is 'friend' (Left) */}
                       <div className={`web-bubble ${m.sender === 'friend' ? 'web-me' : 'web-friend'}`}>
                         {m.text}
                       </div>
                     </div>
                   ))}
-                  {isChatEnded && (
-                    <div style={{ textAlign: "center", padding: "10px", color: "gray", fontSize: "12px" }}>
-                      --- Conversation Ended ---
-                    </div>
-                  )}
                 </div>
-
                 <form className="web-input-bar" onSubmit={handleSend}>
-                  <input 
-                    className="web-text-input" 
-                    value={input} 
-                    onChange={(e) => setInput(e.target.value)}
-                    disabled={isChatEnded}
-                    placeholder={isChatEnded ? "Chat is ended. Restart to type." : "Type a message..."}
-                  />
-                  <button 
-                    type="submit" 
-                    className="web-send-button"
-                    disabled={isChatEnded}
-                    style={{ opacity: isChatEnded ? 0.5 : 1 }}
-                  >
-                    SEND
-                  </button>
+                  <input className="web-text-input" value={input} onChange={(e) => setInput(e.target.value)} />
+                  <button type="submit" className="web-send-button">SEND</button>
                 </form>
             </div>
         </div>

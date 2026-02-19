@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import { Joblist } from './JobList';
+import { Joblist } from '../JobList';
 
 
 

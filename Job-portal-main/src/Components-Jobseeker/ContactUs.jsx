@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Footer } from './Footer'
+import { Footer } from '../Components-LandingPage/Footer'
 import ContactImage from '../assets/Contactus.png'
 import './ContactUs.css'
 import { FHeader } from '../Components-LandingPage/FHeader'

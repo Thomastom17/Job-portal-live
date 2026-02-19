@@ -14,9 +14,9 @@ import Growth from "../assets/Blog_Images/GrowthBlog.png";
 import Learning from "../assets/Blog_Images/LearningBlog.png";
 import Planning from "../assets/Blog_Images/Planning.png";
 import SuccessBlog from "../assets/Blog_Images/SuccessBlog.png";
-import { Header } from './Header';
+import { Header } from '../Components-LandingPage/Header';
 import { useNavigate } from 'react-router-dom';
-import { Footer } from './Footer';
+import { Footer } from '../Components-LandingPage/Footer';
 
 const BlogCategory = () => {
   const navigate = useNavigate()

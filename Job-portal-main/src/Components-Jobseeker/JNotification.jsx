@@ -2,21 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import './JNotification.css'
 import bell from '../assets/header_bell.png'
 import bell_dot from '../assets/header_bell_dot.png'
-import { useJobs } from "../JobContext";
-import { useNavigate } from "react-router-dom";
 
+export const JNotification = ({ notificationsData, showNotification, setShowNotification }) => {
+    const [notifications, setNotifications] = useState(notificationsData);
+    const [activeMenuId, setActiveMenuId] = useState(null);
 
-
-export const JNotification = ({  }) => {
-    
-    
-    const {notificationsData,setNotificationsData,showNotification, setShowNotification,activeMenuId,setActiveMenuId}   = useJobs()
-
-    // const [notifications, setNotifications] = useState(notificationsData);
-    const navigate = useNavigate();
     const containerRef = useRef(null);
 
-    const newNotificationsCount = notificationsData.filter(n => !n.isRead).length;
+    const newNotificationsCount = notifications.filter(n => !n.isRead).length;
 
     // Toggle 3-dot menu
     const toggleMenu = (id, event) => {
@@ -26,7 +19,7 @@ export const JNotification = ({  }) => {
 
     // MARK AS READ
     const handleMarkAsRead = (id) => {
-        setNotificationsData(prev =>
+        setNotifications(prev =>
             prev.map(n =>
                 n.id === id ? { ...n, isRead: true } : n
             )
@@ -36,7 +29,7 @@ export const JNotification = ({  }) => {
 
     // MARK AS UNREAD
     const handleMarkAsUnread = (id) => {
-        setNotificationsData(prev =>
+        setNotifications(prev =>
             prev.map(n =>
                 n.id === id ? { ...n, isRead: false } : n
             )
@@ -46,13 +39,13 @@ export const JNotification = ({  }) => {
 
     // DELETE ONE
     const handleDelete = (id) => {
-        setNotificationsData(prev => prev.filter(n => n.id !== id));
+        setNotifications(prev => prev.filter(n => n.id !== id));
         setActiveMenuId(null);
     };
 
     // CLEAR ALL
     const handleClearAll = () => {
-        setNotificationsData([]);
+        setNotifications([]);
         setActiveMenuId(null);
     };
 
@@ -87,7 +80,7 @@ export const JNotification = ({  }) => {
                 <div className="notifications-heading-container">
                     <img
                         className="notification-header-icons"
-                        src={newNotificationsCount > 0 ? bell_dot:  bell  }
+                        src={newNotificationsCount > 0 ? bell_dot : bell}
                         alt="Notifications"
                     />
                     <h2>Notifications</h2>
@@ -115,9 +108,8 @@ export const JNotification = ({  }) => {
 
             {/* NOTIFICATION LIST */}
             <div className="notifications-list">
-                {notificationsData.map((notification) => (
+                {notifications.map((notification) => (
                     <div
-                        
                         key={notification.id}
                         className={notification.isRead ? "notification-old-item" : "notification-new-item"}
                     >
@@ -164,7 +156,7 @@ export const JNotification = ({  }) => {
                     </div>
                 ))}
 
-                {notificationsData.length === 0 && (
+                {notifications.length === 0 && (
                     <p style={{ padding: "20px", textAlign: "center", color: "#777" }}>
                         No notifications for you
                     </p>
