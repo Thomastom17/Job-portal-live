@@ -47,6 +47,7 @@ import { PageErrorsHelp } from './Components-Jobseeker/PageErrorsHelp'
 import { FileUploadHelp } from './Components-Jobseeker/FileUploadHelp'
 import { Messenger } from './Components-Jobseeker/Messenger'
 import { Chatbox } from './Components-Jobseeker/Chatbox'
+import FindTalent from './Components-Jobseeker/FindTalent'
 
 
 
@@ -238,6 +239,11 @@ const router = createBrowserRouter([
 {
   path: '/Job-portal-Live/Employer/Dashboard',
   element: <EmployerDashboard/>
+},
+
+{
+path: '/Job-portal-Live/jobseeker/FindTalent',
+element: <FindTalent/>
 },
 ])
 
