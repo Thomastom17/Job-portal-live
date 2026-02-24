@@ -5,7 +5,7 @@
 
 }
 .app-container {
-  /* background-color: brown; */
+  background-color: white; 
   padding: 20px;
 
 }
@@ -21,7 +21,7 @@
   background: white;
   border: 1px solid lightslategray;
   padding: 8px 15px;
-  border-radius: 12px;
+  border-radius: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   display: flex;
   width: 100%;
@@ -40,7 +40,7 @@
   color: white;  
   font-size: 15px;
   border: solid 2px blue;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 8px 25px;
   border-radius: 8px;
   cursor: pointer;
@@ -57,7 +57,6 @@
   grid-template-columns: 30% 60%;
   justify-content: center;
   gap: 10px;
-  /* justify-content: space-between; */
 }
 
 .filter-sidebar {
@@ -95,7 +94,7 @@
 }
 
 .job-card {
-  /* background: red; */
+  background: white;
   border-radius: 10px;
   box-sizing: border-box;
   margin: 10px 5px;
@@ -188,3 +187,14 @@
   border-radius: 8px;
   cursor: pointer;
 } 
+
+.view-more {
+  display: block;
+  margin: 20px auto;
+  background: blue;
+  border: none; 
+  color: white;
+  padding: 10px 40px;
+  border-radius: 8px;
+  cursor: pointer;
+}

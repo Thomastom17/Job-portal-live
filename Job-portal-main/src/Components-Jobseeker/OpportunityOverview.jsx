@@ -78,7 +78,6 @@ export const OpportunityOverview = () => {
 
         <div className='opp-overview-main'>
           <div className="opp-job-main">
-            {/* Job Header  */}
             <div className="opp-overview-job-card">
               <div className="Opportunities-job-header">
                 <div>

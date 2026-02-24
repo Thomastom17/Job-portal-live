@@ -87,6 +87,8 @@ function findTalent() {
             <h4>Languages</h4>
             <label><input type="checkbox" /> English</label>
             <label><input type="checkbox" /> Spanish</label>
+            <label><input type="checkbox" /> Hindi</label>
+            <label><input type="checkbox" /> Tamil</label>
             <button className="view-more">View More</button>
           </div>
 
