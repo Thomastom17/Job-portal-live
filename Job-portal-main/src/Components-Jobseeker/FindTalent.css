@@ -1,9 +1,9 @@
-*{
+/* *{
   box-sizing: border-box;
   margin: 0%;
   padding: 0%;
 
-}
+} */
 .app-container {
   background-color: white; 
   padding: 20px;
@@ -35,14 +35,13 @@
   padding: 10px;
 }
 
-.search-confirm-btn {
+.search-confirm-tab {
   background: blue;
   color: white;  
   font-size: 15px;
   border: solid 2px blue;
-  border-radius: 20px;
+  border-radius: 30px;
   padding: 8px 25px;
-  border-radius: 8px;
   cursor: pointer;
 }
         
@@ -85,8 +84,8 @@
   color: #64748b;
 }
 .clear-btn {
-  background: transparent;
-  border: 1px solid #64748b;
+  background: white;
+  border: 1px solid white;
   color: blue;
   padding: 6px 12px;
   border-radius: 6px;
@@ -95,7 +94,7 @@
 
 .job-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 20px;
   box-sizing: border-box;
   margin: 10px 5px;
   padding: 30px;
@@ -108,6 +107,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-name {
@@ -162,8 +167,8 @@
   border: 1px solid blue;
   background: transparent;
   color: blue;
-  padding: 8px 18px;
-  border-radius: 6px;
+  padding: 10px 15px;
+  border-radius: 15px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -172,8 +177,8 @@
   background: blue;
   color: white;
   border: none;
-  padding: 8px 18px;
-  border-radius: 6px;
+  padding: 10px 15px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
@@ -184,17 +189,17 @@
   border: 1px solid blue;
   color: blue;
   padding: 10px 40px;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
 } 
 
 .view-more {
   display: block;
   margin: 20px auto;
-  background: blue;
+  background: white;
   border: none; 
-  color: white;
+  color: blue;
   padding: 10px 40px;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
 }
