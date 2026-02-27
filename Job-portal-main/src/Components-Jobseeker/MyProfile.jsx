@@ -43,7 +43,6 @@ const PopupModal = ({ title, isOpen, onClose, onSave, onDelete, mode, children }
     );
 };
 
-// --- FORM SECTIONS ---
 
 const Profile = ({ data, onChange, onReset, onNext }) => {
     const [errors, setErrors] = useState({});
@@ -80,10 +79,30 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
         document.getElementById('profilephoto').click();
     };
 
-    // 2. Photo select pannum podhu state-kku anuppura logic
     const handleFileEvent = (e) => {
         const file = e.target.files[0];
         if (file) {
+            
+            const allowedExtensions = ['image/jpeg', 'image/jpg', 'image/png'];
+
+           
+            if (!allowedExtensions.includes(file.type)) {
+                
+                alert("❌ Incorrect File Format! Please upload only JPG, JPEG, or PNG images.");
+                
+                
+                e.target.value = ""; 
+                return; 
+            }
+
+           
+            if (file.size > 2 * 1024 * 1024) {
+                alert("⚠️ File too large! Please upload a photo less than 2MB.");
+                e.target.value = "";
+                return;
+            }
+
+            
             handleChange({
                 target: {
                     name: 'profilePhoto',
@@ -93,13 +112,12 @@ const Profile = ({ data, onChange, onReset, onNext }) => {
         }
     };
 
-    // 3. Remove Photo logic
     const removePhoto = () => {
         if (window.confirm("Are you sure you want to remove this photo?")) {
             handleChange({
                 target: { name: 'profilePhoto', value: null }
             });
-            document.getElementById('profilephoto').value = ""; // Input-ah clear panna
+            document.getElementById('profilephoto').value = ""; 
         }
     };
     return (

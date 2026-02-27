@@ -6,9 +6,7 @@ import './Eforgotpassword.css'
 
 export const Eforgotpassword = () => {
   const navigate = useNavigate();
-
   const [formValues, setFormValues] = useState({ email: "" })
-
   const [errors, setErrors] = useState({})
 
   const handleForm = (e) => {
@@ -17,26 +15,27 @@ export const Eforgotpassword = () => {
     setErrors({ ...errors, [name]: "" })
   }
 
-  const validateForm = () => {
+  const handleSubmit = (e) => { 
+    e.preventDefault(); 
     const newErrors = {}
-
     const regexOfMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
+    
     if (!formValues.email.trim()) {
-      newErrors.email = "email is required"
-    } else if (!regexOfMail.test(formValues.email)) {
+      newErrors.email = "Email ID is required"
+      alert("⚠️ Error: Please enter your Email ID!"); 
+    } 
+    else if (!regexOfMail.test(formValues.email)) {
       newErrors.email = "Invalid email format"
+      alert("❌ Error: Invalid Email Format! Please check your email."); 
     }
 
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
 
-  function handleSubmit(formData) {
-    if (!validateForm()) {
-      return false // stops form submit if errors
+    if (Object.keys(newErrors).length === 0) {
+      alert("✅ Success: Reset link sent successfully!");
+      navigate("/Job-portal/employer/login/forgotpassword/createpassword");
     }
-    navigate("/Job-portal/employer/login/forgotpassword/createpassword") // This Code is removed after backend integration
   }
 
   return (
@@ -51,18 +50,28 @@ export const Eforgotpassword = () => {
           <Link to="/Job-portal-Live/employer/signup" className="signup-btn">Sign up</Link>
         </div>
       </header>
+
       <div className='j-forgot-password-login-body'>
         <div className="forgot-password-illustration">
           <img src={forgot} alt="Forgot password Illustration" />
         </div>
-        <form action={handleSubmit} className="forgot-password-form">
+
+        <form onSubmit={handleSubmit} className="forgot-password-form">
           <h2>Forgot Your Password?</h2>
 
           <label>Email ID</label>
-          <input type="text" placeholder="Enter your Email ID" name="email" value={formValues.email} onChange={handleForm} className={errors.email ? "input-error" : ""} />
-          {errors.email && <span className="error-msg">{errors.email}</span>}
+          <input 
+            type="text" 
+            placeholder="Enter your Email ID" 
+            name="email" 
+            value={formValues.email} 
+            onChange={handleForm} 
+            className={errors.email ? "input-error" : ""} 
+          />
+          
+          {errors.email && <span className="error-msg" style={{ color: 'red', display: 'block', marginTop: '5px' }}>{errors.email}</span>}
 
-          <button className="j-send-link-btn">Send Link</button>
+          <button type="submit" className="j-send-link-btn">Send Link</button>
 
           <div className='center-div-text'>
             <p>Remember your password? <Link to="/Job-portal/employer/login" className='j-password-form-login-link'>Login</Link></p>
