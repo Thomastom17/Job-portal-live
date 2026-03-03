@@ -1,0 +1,194 @@
+/* MAIN CONTAINER */
+.notifications-container {
+    position: absolute;
+    top: 60px; /* Header height-ku yethamaari adjust pannunga */
+    right: 0;
+    width: 380px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif; /* Neenga use panra font kuduthukonga */
+}
+
+.notifications-container.hide {
+    display: none;
+}
+
+/* HEADER SECTION */
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #002d5b; /* Dark blue from your image */
+    margin: 0;
+}
+
+.bell-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #888;
+    cursor: pointer;
+}
+
+/* SUB-HEADER SECTION */
+.notifications-subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+}
+
+.subheader-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stay-updated-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* IMAGE-LA IRUKURA MAARI BLUE BADGE */
+.unread-badge {
+    background-color: #f0f7ff;
+    color: #007bff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #d0e5ff;
+}
+
+.clear-all-link {
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+}
+
+/* NOTIFICATIONS LIST */
+.notifications-list {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f8f8f8;
+    transition: background 0.2s;
+}
+
+.notification-item:hover {
+    background-color: #fcfcfc;
+}
+
+/* UNREAD ITEM STYLING */
+.notification-item.unread {
+    background-color: #ffffff;
+}
+
+.notification-item.read {
+    opacity: 0.6;
+}
+
+.item-body {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.notification-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #002d5b;
+    margin: 0 0 4px 0;
+    line-height: 1.4;
+}
+
+.notification-timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+/* 3-DOT MENU */
+.menu-container {
+    position: relative;
+}
+
+.menu-dot-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    z-index: 10;
+    width: 150px;
+}
+
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    color: #333;
+}
+
+.dropdown-menu button:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu .delete-btn {
+    color: #ff4d4f;
+    border-top: 1px solid #eee;
+}
+
+/* EMPTY STATE */
+.empty-state {
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}

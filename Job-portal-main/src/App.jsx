@@ -48,6 +48,7 @@ import { FileUploadHelp } from './Components-Jobseeker/FileUploadHelp'
 import { Messenger } from './Components-Jobseeker/Messenger'
 import { Chatbox } from './Components-Jobseeker/Chatbox'
 import FindTalent from './Components-Jobseeker/FindTalent'
+import { ENotification } from './Components-Employer/ENotification'
 
 
 
@@ -237,6 +238,10 @@ const router = createBrowserRouter([
   element: <Chatbox/>
 },
 {
+  path: '/Job-portal-Live/Employer/ENotification',
+  element: <ENotification />
+},
+{
   path: '/Job-portal-Live/Employer/Dashboard',
   element: <EmployerDashboard/>
 },
@@ -244,7 +249,7 @@ const router = createBrowserRouter([
 {
 path: '/Job-portal-Live/jobseeker/FindTalent',
 element: <FindTalent/>
-}
+},
 ])
 
 function App() {
