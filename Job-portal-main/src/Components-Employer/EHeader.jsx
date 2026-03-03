@@ -63,9 +63,9 @@ export const EHeader = () => {
                 </div>
 
                 {/* Profile Icon */}
-                <Link to="">
+                {/* <Link to="">
                     <img className='jheader-icons' src={profile} width={40} alt='Profile' />
-                </Link>
+                </Link> */}
             </div>
         </header>
     )
