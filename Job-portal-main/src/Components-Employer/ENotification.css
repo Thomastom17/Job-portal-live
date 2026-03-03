@@ -1,7 +1,7 @@
 /* MAIN CONTAINER */
 .notifications-container {
     position: absolute;
-    top: 60px; /* Header height-ku yethamaari adjust pannunga */
+    top: 60px; 
     right: 0;
     width: 380px;
     background: #ffffff;
@@ -11,14 +11,13 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    font-family: 'Inter', sans-serif; /* Neenga use panra font kuduthukonga */
+    font-family: 'Inter', sans-serif; 
 }
 
 .notifications-container.hide {
     display: none;
 }
 
-/* HEADER SECTION */
 .notifications-header {
     display: flex;
     justify-content: space-between;
@@ -36,7 +35,7 @@
 .header-left h2 {
     font-size: 18px;
     font-weight: 700;
-    color: #002d5b; /* Dark blue from your image */
+    color: #002d5b;
     margin: 0;
 }
 
@@ -53,7 +52,7 @@
     cursor: pointer;
 }
 
-/* SUB-HEADER SECTION */
+
 .notifications-subheader {
     display: flex;
     justify-content: space-between;
@@ -73,7 +72,6 @@
     color: #333;
 }
 
-/* IMAGE-LA IRUKURA MAARI BLUE BADGE */
 .unread-badge {
     background-color: #f0f7ff;
     color: #007bff;
@@ -93,7 +91,7 @@
     cursor: pointer;
 }
 
-/* NOTIFICATIONS LIST */
+
 .notifications-list {
     max-height: 450px;
     overflow-y: auto;
@@ -111,7 +109,7 @@
     background-color: #fcfcfc;
 }
 
-/* UNREAD ITEM STYLING */
+
 .notification-item.unread {
     background-color: #ffffff;
 }
@@ -138,7 +136,7 @@
     color: #999;
 }
 
-/* 3-DOT MENU */
+
 .menu-container {
     position: relative;
 }
@@ -185,7 +183,7 @@
     border-top: 1px solid #eee;
 }
 
-/* EMPTY STATE */
+
 .empty-state {
     padding: 40px 20px;
     text-align: center;

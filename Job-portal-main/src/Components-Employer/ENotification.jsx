@@ -4,12 +4,10 @@ import bell from '../assets/header_bell.png';
 import bell_dot from '../assets/header_bell_dot.png';
 
 export const ENotification = ({ notificationsData = [], showNotification, setShowNotification }) => {
-    // Safety check: notificationsData undefined-ah irundha empty array set aagum
     const [notifications, setNotifications] = useState(notificationsData || []);
     const [activeMenuId, setActiveMenuId] = useState(null);
     const containerRef = useRef(null);
 
-    // Filter unread notifications - Optional chaining use panniruken error varaama iruka
     const unreadCount = notifications?.filter(n => !n.isRead).length || 0;
 
     // Toggle Read/Unread Status
